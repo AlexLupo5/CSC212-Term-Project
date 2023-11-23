@@ -7,13 +7,15 @@
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName; //Sets fileName to name of file
     convertCordToVect();
-    //Reads throught the inputFile and puts all x cordinates into
-    //xCordinates vector and all y cordinates in yCordinates vector
+    //Reads through the inputFile and puts all x coordinates into
+    //xCoordinates vector and all y coordinates in yCoordinates vector
 
     // // Used for testing // //
-    /*for(int i = 0; i < xCordinates.size(); i++) {
-        std::cout << xCordinates[i] << ", " << yCordinates[i] << std::endl;
+    /*for(int i = 0; i < xCoordinates.size(); i++) {
+        std::cout << xCoordinates[i] << ", " << yCoordinates[i] << std::endl;
     }*/
+
+    findLowestY();
 
 }
 
@@ -21,7 +23,35 @@ convexHull::~convexHull() {
 
 }
 
+void convexHull::findLowestY() {
+    int lowestY = 0;
+
+    for (int i = 1; i < yCoordinates.size(); i++) {
+
+        if (yCoordinates[lowestY] > yCoordinates[i]) {
+            lowestY = i;
+        }
+
+        else if (yCoordinates[lowestY] == yCoordinates[i]) {
+            if (xCoordinates[lowestY] > xCoordinates[i]) {
+                lowestY = yCoordinates[i];
+            }
+        }
+
+    }
+
+    // // Used for testing // //
+    //std::cout << "Lowest Y coordinates is: " << xCoordinates[lowestY] << ", " << yCoordinates[lowestY] << std::endl;
+
+}
+
+double convexHull::polarAngle(int x, int y) { //Returns the polarAngle of the given (x,y) coordinates
+    return atan(y/x);
+};
+
 void convexHull::convertCordToVect() {
+    //Reads through the inputFile and puts all x coordinates into
+    //xCoordinates vector and all y coordinates in yCoordinates vector
     std::ifstream infile(fileName);
     std::string line;
     int num = 0;
@@ -39,14 +69,14 @@ void convexHull::convertCordToVect() {
                 temp += x[i];
                 i++;
             }
-            xCordinates.push_back(std::stoi(temp));
+            xCoordinates.push_back(std::stoi(temp));
             i++;
             temp.clear();
             while (x[i] != ')') {
                 temp += x[i];
                 i++;
             }
-            yCordinates.push_back(std::stoi(temp));
+            yCoordinates.push_back(std::stoi(temp));
         }
     }
     return;
