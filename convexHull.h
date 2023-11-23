@@ -9,8 +9,8 @@ class convexHull {
 
 private:
     std::string fileName;
-std::vector <int> xCordinates;
-std::vector <int> yCordinates;
+std::vector <int> xCoordinates;
+std::vector <int> yCoordinates;
 
 public:
 
@@ -19,6 +19,10 @@ public:
     ~convexHull(); //convexHull deconstructor
 
     void convertCordToVect();
+
+    void findLowestY();
+
+    double polarAngle(int x, int y); //Returns the polarAngle of the given (x,y) coordinates
 
 };
 
