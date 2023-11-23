@@ -14,3 +14,14 @@ Problem/Solution:
   - can generate a DOT file
 
 **_Read a set of points from a file_**
+
+**Status Update**
+convexHull.cpp
+  * Added convexHull(), ~convexHull(), convertCordToVect(), findLowestY(), polarAngle(int x, int y)
+    * convertCordToVect() - can read through a file and sort the x and y coordinates into an x int vector and a y int vector
+    * findLowestY() - finds the lowest Y coordinate in the Y vector, is used in Graham's Scan algorithm
+    * polarAngle(int x, int y) - finds the polar angle of the (x,y) coordinates
+convexHull.h
+  * Added to private: std::string fileName, std::vector <int> xCoordinates, std::vector <int> yCoordinates
+  * Added to public: convexHull(), ~convexHull(), convertCordToVect(), findLowestY(), polarAngle(int x, int y)
+- Alex
