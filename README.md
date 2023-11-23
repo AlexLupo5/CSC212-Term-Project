@@ -24,4 +24,3 @@ convexHull.cpp
 convexHull.h
   * Added to private: std::string fileName, std::vector <int> xCoordinates, std::vector <int> yCoordinates
   * Added to public: convexHull(), ~convexHull(), convertCordToVect(), findLowestY(), polarAngle(int x, int y)
-- Alex
