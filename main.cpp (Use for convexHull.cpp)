@@ -1,0 +1,17 @@
+#include "convexHull.h"
+#include <iostream>
+#include <fstream>
+#include <sstream>
+
+//input file should be formatted like this
+/*(x,y)
+ *(x,y)
+ *(x,y)
+ */
+
+int main(int argc, char*argv[]) {
+
+convexHull(std::string(argv[1]));
+
+    return 0;
+}
