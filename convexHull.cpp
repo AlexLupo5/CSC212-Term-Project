@@ -15,7 +15,13 @@ convexHull::convexHull(std::string fileName) {
         std::cout << xCoordinates[i] << ", " << yCoordinates[i] << std::endl;
     }*/
 
-    findLowestY();
+    addToOutput(findLowestYCoordPair()); //finds the lowest Y coordinate pair and adds to output
+lowX = xCoordinates[findLowestYCoordPair()];
+lowY = yCoordinates[findLowestYCoordPair()];
+
+//Continue code here
+
+    return;
 
 }
 
@@ -23,7 +29,14 @@ convexHull::~convexHull() {
 
 }
 
-void convexHull::findLowestY() {
+void convexHull::addToOutput(int i) {
+    std::string temp = "(" + std::to_string(xCoordinates[i]) + ", " + std::to_string(yCoordinates[i]) + ")\n";
+    output.push_back(temp);
+    //std::cout << "(" + std::to_string(xCoordinates[i]) + ", " + std::to_string(yCoordinates[i]) + ")\n";
+return;
+}
+
+int convexHull::findLowestYCoordPair() {
     int lowestY = 0;
 
     for (int i = 1; i < yCoordinates.size(); i++) {
@@ -34,20 +47,27 @@ void convexHull::findLowestY() {
 
         else if (yCoordinates[lowestY] == yCoordinates[i]) {
             if (xCoordinates[lowestY] > xCoordinates[i]) {
-                lowestY = yCoordinates[i];
+                lowestY = i;
             }
         }
-
     }
 
     // // Used for testing // //
     //std::cout << "Lowest Y coordinates is: " << xCoordinates[lowestY] << ", " << yCoordinates[lowestY] << std::endl;
+    return lowestY;
 
 }
 
 double convexHull::polarAngle(int x, int y) { //Returns the polarAngle of the given (x,y) coordinates
     return atan(y/x);
 };
+
+void convexHull::printOutput() {
+    for(int i = 0; i < output.size(); i++) {
+        std::cout << output[i];
+    }
+    return;
+}
 
 void convexHull::convertCordToVect() {
     //Reads through the inputFile and puts all x coordinates into
