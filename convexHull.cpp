@@ -59,7 +59,7 @@ int convexHull::findLowestYCoordPair() {
 }
 
 double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
-    return atan(y/x);
+    return atanf(y/x) * 180/3.14159265359;
 };
 
 void convexHull::printOutput() {
