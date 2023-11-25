@@ -23,5 +23,5 @@ public:
   int orientation(Point a, Point b, Point c);
   void computeConvex();
   std::vector<Point> getConvex();
-  bool compare(Point a, Point b)
+  bool compare(Point a, Point b);
 };
