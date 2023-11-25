@@ -1,5 +1,6 @@
 #include "convexHull.h"
 #include <iostream>
+#include <string>
 #include <fstream>
 #include <sstream>
 
@@ -10,8 +11,10 @@
  */
 
 int main(int argc, char*argv[]) {
+    std::string temp = argv[1];
 
-convexHull(std::string(argv[1]));
+convexHull shape(temp);
+shape.printOutput();
 
     return 0;
 }
