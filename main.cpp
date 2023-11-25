@@ -22,9 +22,11 @@ int main() {
         inputFile >> pointsvect[i].x >> pointsvect[i].y;
     }
 
+    //Close the file
     inputFile.close();
 
     //Do the Convex hull
     std::vector<Point> hull = convexHull(points);
+    
     return 0;
 }
