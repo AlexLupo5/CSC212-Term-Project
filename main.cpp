@@ -3,9 +3,9 @@
 #include <vector>
 #include "Project.h"
 
-int main() {
+int main(int argc, char* argv[]) {
     //Get points from the file
-    std::ifstream inputFile("points.txt");
+    std::ifstream inputFile(argv[1]);
     if (!inputFile.is_open()) {
         std::cout << "Error opening file";
         std::cout << "\n";
