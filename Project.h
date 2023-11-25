@@ -9,18 +9,19 @@ private:
 public:
   Point(int x, int y);
   ~Point();
-  bool compare(int x1, int y1, int x2, int y2);
-
 }
 
 class Convex{
 private:
-  std::vector<int> point;
+  Point temp;
+  std::vector<Point> Point;
+  std::vector<Point> ConHull;
 
 public:
-  Convex(std::vector<int> point);
+  Convex(std::vector<Point> pointsvect);
   ~Convex();
-  int orientation(std::vector<int> point);
-  int computeConvex(std::veector<int> point);
-
+  int orientation(Point a, Point b, Point c);
+  void computeConvex();
+  std::vector<Point> getConvex();
+  bool compare(Point a, Point b)
 };
