@@ -7,7 +7,7 @@ int main(int argc, char* argv[]) {
     //Get points from the file
     std::ifstream inputFile(argv[1]);
     if (!inputFile.is_open()) {
-        std::cout << "Error opening file";
+        std::cout << "Could not open file";
         std::cout << "\n";
         return 1;
     }
@@ -23,13 +23,16 @@ int main(int argc, char* argv[]) {
     }
 
     //Stores points in .cpp file
-    PointFunction(pointsvect);
+    Convex Hull(pointsvect);
+
+    //Do the Convex Hull
+    Hull.computeConvex();
 
     //Close the file
     inputFile.close();
 
-    //Do the Convex hull
-    std::vector<Point> hull = convexHull(points);
+    //Get Convex Hull
+    std::vector<Point> hull = Hull.getConvex();
     
     return 0;
 }
