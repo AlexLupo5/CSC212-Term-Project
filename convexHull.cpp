@@ -6,7 +6,7 @@
 
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName; //Sets fileName to name of file
-    convertCordToVect();
+    convertCoordToXYVect();
     //Reads through the inputFile and puts all x coordinates into
     //xCoordinates vector and all y coordinates in yCoordinates vector
 
@@ -16,8 +16,8 @@ convexHull::convexHull(std::string fileName) {
     }*/
 
     addToOutput(findLowestYCoordPair()); //finds the lowest Y coordinate pair and adds to output
-lowX = xCoordinates[findLowestYCoordPair()];
-lowY = yCoordinates[findLowestYCoordPair()];
+    curX.push_back(xCoordinates[findLowestYCoordPair()]);
+    curY.push_back(yCoordinates[findLowestYCoordPair()]);
 
 //Continue code here
 
@@ -33,7 +33,7 @@ void convexHull::addToOutput(int i) {
     std::string temp = "(" + std::to_string(xCoordinates[i]) + ", " + std::to_string(yCoordinates[i]) + ")\n";
     output.push_back(temp);
     //std::cout << "(" + std::to_string(xCoordinates[i]) + ", " + std::to_string(yCoordinates[i]) + ")\n";
-return;
+    return;
 }
 
 int convexHull::findLowestYCoordPair() {
@@ -58,7 +58,7 @@ int convexHull::findLowestYCoordPair() {
 
 }
 
-double convexHull::polarAngle(int x, int y) { //Returns the polarAngle of the given (x,y) coordinates
+double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
     return atan(y/x);
 };
 
@@ -69,7 +69,7 @@ void convexHull::printOutput() {
     return;
 }
 
-void convexHull::convertCordToVect() {
+void convexHull::convertCoordToXYVect() {
     //Reads through the inputFile and puts all x coordinates into
     //xCoordinates vector and all y coordinates in yCoordinates vector
     std::ifstream infile(fileName);
