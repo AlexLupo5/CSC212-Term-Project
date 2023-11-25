@@ -22,6 +22,9 @@ int main(int argc, char* argv[]) {
         inputFile >> pointsvect[i].x >> pointsvect[i].y;
     }
 
+    //Stores points in .cpp file
+    PointFunction(pointsvect);
+
     //Close the file
     inputFile.close();
 
