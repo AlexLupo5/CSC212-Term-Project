@@ -28,3 +28,18 @@ convexHull.cpp
 convexHull.h
   * Added to private: std::string fileName, std::vector <int> xCoordinates, std::vector <int> yCoordinates, std::vector <std::string> output, std::vector <int> curX, std::vector <int> curY
   * Added to public: convexHull(), ~convexHull(), convertCoordToXYVect(), findLowestY(), polarAngle(int x, int y), addToOutput(int i), printOutput()
+
+**Status Update to**
+Project.cpp
+  * Added Convex(std::vector<Point> pointsvect), ~Convex(), computeConvex(), orienation(Point a, Point b, Point c), getConvex(), and compare(Point a, Point b)
+    * Convex(std::vector<Point> pointsvect) - Convex Hull constructor
+    * ~Convex() = Convex Hull destructor
+    * computeConvex() - The main function that computes the Convex hull with the given points and uses Graham's Scan algorithm
+    * orientation(Point a, Point b, Point c) - Tells you wheater the Point is Collinear, Clockwise, or Counterclockwise
+    * getConvex() - Returns the Convex Hull points
+    * compare(Point a, Point b) - Compares two points based on there orientation
+
+**Status Update to**
+Project.h
+  * Added to private: Point temp, std::vector<Point> Point, std::vector<Point> ConHull
+  * Added to public: Convex(std::vector<Point> pointsvect), ~Convex(), int orientation(Point a, Point b, Point c), void computeConvex(), std::vector<Point> getConvex(), bool compare(Point a, Point b)
