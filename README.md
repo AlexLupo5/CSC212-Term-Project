@@ -34,8 +34,8 @@ Project.cpp
   * Added Convex(std::vector<Point> pointsvect), ~Convex(), computeConvex(), orienation(Point a, Point b, Point c), getConvex(), and compare(Point a, Point b)
     * Convex(std::vector<Point> pointsvect) - Convex Hull constructor
     * ~Convex() = Convex Hull destructor
-    * computeConvex() - The main function that computes the Convex hull with the given points and uses Graham's Scan algorithm
-    * orientation(Point a, Point b, Point c) - Tells you wheater the Point is Collinear, Clockwise, or Counterclockwise
+    * computeConvex() - The main function that computes the Convex hull with the given points and uses Graham's Scan Algorithm
+    * orientation(Point a, Point b, Point c) - Tells you whether the Point is Collinear, Clockwise, or Counterclockwise
     * getConvex() - Returns the Convex Hull points
     * compare(Point a, Point b) - Compares two points based on there orientation
 
