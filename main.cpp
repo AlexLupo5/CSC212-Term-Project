@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
     inputFile >> Points;
 
     //Save the points in the vector
-    std::vector<Point> pointsvect(Points);
+    std::vector<Point> pointsvect;
     for (int i = 0; i < Points; i++) {
         inputFile >> pointsvect[i].x >> pointsvect[i].y;
     }
