@@ -9,17 +9,23 @@ Date: November 2023
 ## Table of Contents
 
 ### Introduction
+
 • What is a Convex Hull?
+
 • Context & purpose
 
 ### Methods
 • Purpose of each method
+
 • Function of each method
+
 • Algorithm in depth
 
 ### Implementation
-• Key code
+• Important code
+
 • Input scenarios
+
 • Output from our code
 
 
