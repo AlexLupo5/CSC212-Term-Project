@@ -11,7 +11,7 @@ public:
 
 class Convex{
 private:
-    Point temp;
+    std::vector<Point> temp;
     std::vector<Point> Pvect;
     std::vector<Point> ConHull;
 
@@ -20,6 +20,6 @@ public:
     ~Convex();
     void computeConvex();
     std::vector<Point> getConvex();
-    int orientation(std::vector<Point> a, std::vector<Point> b, std::vector<Point> c);
-    bool compare(std::vector<Point> a, std::vector<Point> b);
+    int orientation(Point a, Point b, Point c);
+    bool compare(Point a, Point b);
 };
