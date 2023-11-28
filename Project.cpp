@@ -21,7 +21,7 @@ void Convex::computeConvex(){
     int small = 0;
     for (int i = 1; i < this->Pvect.size(); i++){
         if (this->Pvect[i].y < this->Pvect[small].y || (this->Pvect[i].y
-                < this->Pvect[small].y && this->Pvect[i].x < this->Pvect[small].x)){
+                                                        < this->Pvect[small].y && this->Pvect[i].x < this->Pvect[small].x)){
             small = i;
         }
     }
@@ -31,7 +31,7 @@ void Convex::computeConvex(){
 
     //Sort the other point based on polar angle
     temp[0] = this->Pvect[0];
-    std::sort(this->Pvect.begin() + 1, this->Pvect.end(), compare);
+    //std::sort(this->Pvect.begin() + 1, this->Pvect.end(), compare);
 
     //Create the convex hull with the three first points
     ConHull.push_back(this->Pvect[0]);
@@ -40,15 +40,15 @@ void Convex::computeConvex(){
 
     //Compute the rest of the points
     for (int i = 3; i < this->Pvect.size(); i++){
-        while(orientation(ConHull[ConHull.size() - 2], ConHull[ConHull.size() - 1],
+        while(orientation(ConHull[ConHull.size() - 1], ConHull[ConHull.size() - 1],
                           this->Pvect[i]) != 2){
             ConHull.pop_back();
         }
-        ConHull.push_back();
+        //ConHull.push_back();
     }
 }
 
-int Convex::orientation(std::vector<Point> a, std::vector<Point> b, std::vector<Point> c){
+int Convex::orientation(Point a, Point b, Point c){
     //Compute equation for orientation
     int numb = (b.y - a.y) * (c.x - b.x) - (b.x - a.x) * (c.y - b.y);
 
@@ -71,18 +71,13 @@ std::vector<Point> Convex::getConvex(){
     return ConHull;
 }
 
-bool Convex::compare(std::vector<Point> a, std::vector<Point> b){
+bool Convex::compare(Point a, Point b){
     //Check orientation
-    int check = orientation(temp, a, b);
-
-    if (check == 0){
-        return (temp.x + temp.y) < (a.x + a.y);
-    }
+    int check = orientation(temp[0], a, b);
 
     //Counterclockwise sort
     return check == 2;
 }
-
 
 
       
