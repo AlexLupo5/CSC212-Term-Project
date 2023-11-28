@@ -13,6 +13,8 @@ private:
     std::vector <int> yCoordinates;
     std::vector <int> curX;
     std::vector <int> curY;
+    std::vector <int> xSorted;
+    std::vector <int> ySorted;
     std::vector <std::string> output;
 
 public:
@@ -20,6 +22,8 @@ public:
     convexHull(std::string fileName); //convexHull constructor
     ~convexHull(); //convexHull deconstructor
 
+    void checkForDupl();
+    void sort();
     void convertCoordToXYVect();
     int findLowestYCoordPair();
 
