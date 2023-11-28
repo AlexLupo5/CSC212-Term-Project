@@ -190,7 +190,7 @@ void convexHull::convertCoordToXYVect() {
 
 }
 
-void convexHull::Visualize(){
+void convexHull::visualize(){
     std::ofstream dotfile(fileName + ".dot");
     if (dotfile.is_open()){
         dotfile << "graph convexHull";
