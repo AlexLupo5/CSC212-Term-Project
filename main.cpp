@@ -33,6 +33,6 @@ int main(int argc, char* argv[]) {
 
     //Get Convex Hull
     std::vector<Point> hull = Hull.getConvex();
-    
+
     return 0;
 }
