@@ -14,6 +14,8 @@ Date: November 2023
 
 • Context & purpose
 
+---
+
 ### Methods
 • Purpose of each method
 
@@ -21,6 +23,7 @@ Date: November 2023
 
 • Algorithm in depth
 
+---
 
 ### Implementation
 • Important code
@@ -28,6 +31,8 @@ Date: November 2023
 • Input scenarios
 
 • Output from our code
+
+---
 
 ### Conclusion
 
