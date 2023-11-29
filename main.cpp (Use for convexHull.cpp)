@@ -13,8 +13,7 @@
 int main(int argc, char*argv[]) {
     std::string temp = argv[1];
 
-convexHull shape(temp);
-shape.printOutput();
+    convexHull shape(temp);
 
     return 0;
 }
