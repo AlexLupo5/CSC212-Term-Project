@@ -1,20 +1,129 @@
-#include "convexHull.h"
 #include <iostream>
-#include <fstream>
-#include <sstream>
-#include <cmath>
+#include "convexHull.h"
 
 convexHull::convexHull(std::string fileName) {
-    this->fileName = fileName; //Sets fileName to name of file
+    this->fileName = fileName;
 
     convertToPoint();
 
-    return;
+    Point points[pointsTemp.size()];
+
+    for(int i = 0; i < pointsTemp.size(); i++) {
+
+        points[i].x = pointsTemp[i].x;
+        points[i].y = pointsTemp[i].y;
+
+    }
+
+    convexHullSolve(points, pointsTemp.size());
+}
+
+void convexHull::convexHullSolve(Point points[], int size){
+    int lowesty = points[0].y;
+    int lowestval = 0;
+    for (int i = 1; i < size; i++){
+        int y = points[i].y;
+
+        if ((y < points[0].y) || (points[0].y == y && points[i].x < points[lowestval].x)){
+            lowesty = points[i].y;
+            lowestval = i;
+        }
+    }
+
+    Point ptemp = points[0];
+    points[0] = points[lowestval];
+    points[lowestval] = ptemp;
+
+    temp = points[0];
+    qsort(&points[1], size - 1, sizeof(Point), compare);
+
+    int index = 1;
+    for (int i = 1; i < size; i++){
+        while (i < size - 1 && orientation(temp, points[i],points[i + 1]) == 0){
+            i++;
+        }
+        points[index] = points[i];
+        index++;
+    }
+
+    if (index < 3){
+        return;
+    }
+
+    for(int i = 0; i < 3; i++) {
+        output.push_back(points[i]);
+    }
+
+    for (int i = 3; i < index; i++){
+        while (output.size() > 1 && orientation(Top(output), output[output.size() - 1], points[i]) != 2){
+            output.pop_back();
+        }
+        output.push_back(points[i]);
+    }
+
+    while (output.size() > 0){
+        Point point = output[output.size()-1];
+        std::cout << "(" << point.x << ", " << point.y <<")\n";
+        output.pop_back();
+    }
+}
+
+convexHull::~convexHull(){
 
 }
 
-convexHull::~convexHull() {
+Point convexHull::temp = Point();
 
+Point convexHull::Top(std::vector<Point> &vect){
+    Point point = vect[vect.size()-1];
+    vect.pop_back();
+    Point answer = vect[vect.size()-1];
+    vect.push_back(point);
+    return answer;
+}
+
+int convexHull::distance(Point point1, Point point2){
+    return (point1.x - point2.x)*(point1.x - point2.x) + (point1.y - point2.y)*(point1.y - point2.y);
+}
+
+int convexHull::orientation(Point point1, Point point2, Point point3){
+    int orient = (point2.y - point1.y) * (point3.x - point2.x) - (point2.x - point1.x) * (point3.y - point2.y);
+
+    //Colinear
+    if (orient >= 0) {
+        //Clockwise
+        if (orient > 0){
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }
+    //Counterclockwise
+    else{
+        return 2;
+    }
+}
+
+int convexHull::compare(const void *point1, const void *point2){
+    Point *tpoint1 = (Point *)point1;
+    Point *tpoint2 = (Point *)point2;
+
+    if (orientation(temp, *tpoint1, *tpoint2) == 0){
+        if (distance(temp, *tpoint2) >= distance(temp, *tpoint1)){
+            return -1;
+        }
+        else{
+            return 1;
+        }
+    }
+
+    if (orientation(temp, *tpoint1, *tpoint2) == 2){
+        return -1;
+    }
+    else{
+        return 1;
+    }
 }
 
 void convexHull::convertToPoint() {
@@ -47,6 +156,6 @@ void convexHull::convertToPoint() {
             }
             tempy = std::stoi(temp);
         }
-        points.push_back({tempx, tempy});
+        pointsTemp.push_back({tempx, tempy});
     }
 }
