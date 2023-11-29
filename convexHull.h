@@ -4,22 +4,28 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
-
+struct Point {
+    int x, y;
+};
 class convexHull {
 
 private:
-    struct Point {
-        int x, y;
-    };
-std::string fileName;
-std::vector<Point> points;
+    std::string fileName;
+    std::vector<Point> pointsTemp;
+    std::vector<Point> output;
 public:
-
     convexHull(std::string fileName); //convexHull constructor
     ~convexHull(); //convexHull deconstructor
+    static Point temp;
 
     void convertToPoint();
+    void convexHullSolve(Point points[], int n);
 
+    static int orientation(Point p, Point q, Point r);
+    static int distance(Point point1, Point point2);
+    static int compare(const void *point1, const void *point2);
+
+    Point Top(std::vector<Point> &S);
 };
 
 #endif
