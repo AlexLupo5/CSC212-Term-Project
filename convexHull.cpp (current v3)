@@ -60,12 +60,6 @@ void convexHull::convexHullSolve(Point points[], int size){
         }
         output.push_back(points[i]);
     }
-
-    while (output.size() > 0){
-        Point point = output[output.size()-1];
-        std::cout << "(" << point.x << ", " << point.y <<")\n";
-        output.pop_back();
-    }
 }
 
 convexHull::~convexHull(){
@@ -99,7 +93,7 @@ int convexHull::orientation(Point point1, Point point2, Point point3){
             return 0;
         }
     }
-    //Counterclockwise
+        //Counterclockwise
     else{
         return 2;
     }
@@ -157,5 +151,32 @@ void convexHull::convertToPoint() {
             tempy = std::stoi(temp);
         }
         pointsTemp.push_back({tempx, tempy});
+    }
+}
+
+void convexHull::print() {
+std::vector<Point> out = output;
+    while (out.size() > 0){
+        Point point = out[out.size()-1];
+        std::cout << "(" << point.x << ", " << point.y <<")\n";
+        out.pop_back();
+    }
+}
+
+void convexHull::dot() {
+    std::vector<Point> out = output;
+    std::ofstream File("convexHull.dot"); // Create or open a dot file named "output.dot"
+
+    if (!File.is_open()) {
+        std::cout << "Could not open the dot file." << std::endl;
+    }
+
+    while (out.size() > 0) {
+        Point point = out[out.size() - 1];
+        File << "(" << point.x << "," << point.y << ")";
+        if(out.size() > 1) {
+            File << "\n";
+        }
+        out.pop_back();
     }
 }
