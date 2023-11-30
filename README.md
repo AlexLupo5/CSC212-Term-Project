@@ -15,13 +15,8 @@ Problem/Solution:
 
 **_Read a set of points from a file_**
 
-**Status Update to**
-convexHull.cpp (version 3)
-  * Added convexHull(), ~convexHull(), convertCordToVect(), struct Point
-    * convertToPoint() - can read through a file and sort the x and y coordinates into point
-    
-  
-**Status Update to**
-convexHull.h (version 3)
-  * Added to private: std::string fileName, std::vector<Point> points;
-  * Added to public: convexHull(), ~convexHull(), convertToPoint()
+**Status Update**
+- For current working version of convexHull.cpp please download convexHull.cpp and convexHull.h to your program.
+convexHull (version 3)
+  * convexHull can be called in main by convexHull "name of objext"("file name");
+  * convexHull.cpp also allows the user to print the output to the terminal or to a dot file by either calling "name of object".print() or "name of object".dot() in the main.cpp file.
