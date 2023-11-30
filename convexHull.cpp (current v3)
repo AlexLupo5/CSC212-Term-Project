@@ -6,6 +6,10 @@ convexHull::convexHull(std::string fileName) {
 
     convertToPoint();
 
+    if(pointsTemp.size() < 3) {
+        std::cout << "Convex Hull is not possible" << std::endl;
+    }
+
     Point points[pointsTemp.size()];
 
     for(int i = 0; i < pointsTemp.size(); i++) {
@@ -171,12 +175,18 @@ void convexHull::dot() {
         std::cout << "Could not open the dot file." << std::endl;
     }
 
-    while (out.size() > 0) {
-        Point point = out[out.size() - 1];
-        File << "(" << point.x << "," << point.y << ")";
-        if(out.size() > 1) {
-            File << "\n";
+    if(pointsTemp.size() < 3) {
+        //File << "Convex Hull is not possible" << std::endl;
+    }
+
+    else {
+        while (out.size() > 0) {
+            Point point = out[out.size() - 1];
+            File << "(" << point.x << "," << point.y << ")";
+            if (out.size() > 1) {
+                File << "\n";
+            }
+            out.pop_back();
         }
-        out.pop_back();
     }
 }
