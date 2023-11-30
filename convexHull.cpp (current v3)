@@ -28,7 +28,7 @@ void convexHull::convexHullSolve(Point points[], int size){
     for (int i = 1; i < size; i++){
         int y = points[i].y;
 
-        if ((y < points[0].y) || (points[0].y == y && points[i].x < points[lowestval].x)){
+        if ((y < lowesty) || (lowesty == y && points[i].x < points[lowestval].x)){
             lowesty = points[i].y;
             lowestval = i;
         }
