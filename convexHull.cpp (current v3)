@@ -13,10 +13,8 @@ convexHull::convexHull(std::string fileName) {
     Point points[pointsTemp.size()];
 
     for(int i = 0; i < pointsTemp.size(); i++) {
-
         points[i].x = pointsTemp[i].x;
         points[i].y = pointsTemp[i].y;
-
     }
 
     convexHullSolve(points, pointsTemp.size());
@@ -25,10 +23,10 @@ convexHull::convexHull(std::string fileName) {
 void convexHull::convexHullSolve(Point points[], int size){
     int lowesty = points[0].y;
     int lowestval = 0;
-    for (int i = 1; i < size; i++){
+    for (int i = 0; i < size; i++){
         int y = points[i].y;
 
-        if ((y < lowesty) || (lowesty == y && points[i].x < points[lowestval].x)){
+        if ((y < lowesty) || ((lowesty == y && points[i].x < points[lowestval].x))){
             lowesty = points[i].y;
             lowestval = i;
         }
@@ -39,7 +37,60 @@ void convexHull::convexHullSolve(Point points[], int size){
     points[lowestval] = ptemp;
 
     temp = points[0];
-    qsort(&points[1], size - 1, sizeof(Point), compare);
+    //std::cout << "lowest y = " << points[0].x << "," << points[0].y << std::endl;
+    //qsort(&points[1], size - 1, sizeof(Point), compare);
+
+    // //Sort Added// //
+
+std::vector <Point> pointSort;
+    for(int i = 1; i < pointsTemp.size(); i++) {
+        pointSort.push_back(points[i]);
+    }
+    //for(int i = 0; i < pointsTemp.size(); i++) {
+//std::cout << pointSort[i].x << ", " << pointSort[i].y << std::endl;
+    //}
+    //std::cout << std::endl;
+
+    int num = pointSort.size();
+
+    for(int i = 1; i <= num; i++) {
+        int ang = 0;
+
+        for(int j = 0; j < pointSort.size(); j++) {
+
+            if (polarAngle(pointSort[ang].x - points[0].x,
+                           pointSort[ang].y - points[0].y) ==
+                polarAngle(pointSort[j].x - points[0].x,
+                           pointSort[j].y - points[0].y)) {
+
+                if((sqrt(pow(pointSort[ang].x,2) + pow(pointSort[ang].y, 2))) >
+                   (sqrt(pow(pointSort[j].x,2) + pow(pointSort[j].x, 2)))) {
+                    ang = j;
+                }
+            } else {
+
+            if (polarAngle(pointSort[ang].x - points[0].x,
+                           pointSort[ang].y - points[0].y) >
+                polarAngle(pointSort[j].x - points[0].x,
+                           pointSort[j].y - points[0].y)) {
+
+
+                    ang = j;
+                }
+            }
+
+        }
+
+        points[i] = (pointSort[ang]);
+
+        //std::cout << i << " = (" << points[i].x << ", " << points[i].y << ") = ";
+        //std::cout << polarAngle(points[i].x - points[0].x,points[i].y - points[0].y) << std::endl;
+
+        pointSort.erase(pointSort.begin() + ang);
+
+    }
+
+    // //Sort End// //
 
     int index = 1;
     for (int i = 1; i < size; i++){
@@ -82,6 +133,11 @@ Point convexHull::Top(std::vector<Point> &vect){
 
 int convexHull::distance(Point point1, Point point2){
     return (point1.x - point2.x)*(point1.x - point2.x) + (point1.y - point2.y)*(point1.y - point2.y);
+}
+
+double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
+    //return atanf(y/x) * 180/3.14159265359;
+    return std::atan2(y, x) * (180.0 / M_PI);
 }
 
 int convexHull::orientation(Point point1, Point point2, Point point3){
