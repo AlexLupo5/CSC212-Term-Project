@@ -159,7 +159,7 @@ int convexHull::orientation(Point point1, Point point2, Point point3){
     }
 }
 
-int convexHull::compare(const void *point1, const void *point2){
+/*int convexHull::compare(const void *point1, const void *point2){
     Point *tpoint1 = (Point *)point1;
     Point *tpoint2 = (Point *)point2;
 
@@ -178,7 +178,7 @@ int convexHull::compare(const void *point1, const void *point2){
     else{
         return 1;
     }
-}
+}*/
 
 void convexHull::convertToPoint() {
     //Reads through the inputFile and puts all x coordinates into
