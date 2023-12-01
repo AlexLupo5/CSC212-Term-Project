@@ -28,7 +28,7 @@ public:
 
     static int orientation(Point p, Point q, Point r);
     static int distance(Point point1, Point point2);
-    static int compare(const void *point1, const void *point2);
+    //static int compare(const void *point1, const void *point2);
 
     Point Top(std::vector<Point> &S);
 };
