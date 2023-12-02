@@ -24,6 +24,7 @@ convexHull::convexHull(std::string fileName) {
 }
 
 void convexHull::convexHullSolve(Point points[], int size){
+
     int lowesty = points[0].y;
     int lowestval = 0;
     for (int i = 0; i < size; i++){
@@ -235,25 +236,76 @@ std::vector<Point> out = output;
 }
 
 void convexHull::dot() {
-    std::vector<Point> out = output;
-    std::ofstream File("convexHull.dot"); // Create or open a dot file named "output.dot"
+    //Creating a dot file
+    std::ofstream File("convexHull.dot");
 
-    if (!File.is_open()) {
-        std::cout << "Could not open the dot file." << std::endl;
-    }
+    //Initializing vector of points for points that aren't edge vertices
+    std::vector<Point> otherPoints;
 
-    if(pointsTemp.size() < 3) {
-        //File << "Convex Hull is not possible" << std::endl;
-    }
+    //Checks all the points to see if they are edge vertices / in convex hull
+    for (auto point : pointsTemp) {
+        bool isInConvexHull = false;
 
-    else {
-        while (out.size() > 0) {
-            Point point = out[out.size() - 1];
-            File << "(" << point.x << "," << point.y << ")";
-            if (out.size() > 1) {
-                File << "\n";
+        //Checks if point is in the convex hull
+        for (auto convexHullPoint : output) {
+            if (point.x == convexHullPoint.x && point.y == convexHullPoint.y) {
+                isInConvexHull = true;
+                break;
             }
-            out.pop_back();
+        }
+
+        //Adds points that aren't edge vertices to the new vector
+        if (!isInConvexHull) {
+            otherPoints.push_back(point);
         }
     }
+
+    //Convex hull requires a minimum of 3 points
+    if (output.size() < 3) {
+        File << "Convex Hull is not possible" << std::endl;
+        File << "\ngraph G {\n";
+        //Writes only the points to the file (no edges)
+        std::cout << pointsTemp.size();
+        for (size_t i = 0; i < pointsTemp.size(); i++) {
+            File << "\t" << i << " [label=\"(" << pointsTemp[i].x << "," << pointsTemp[i].y << ")\"];\n";
+        }
+        File << "}\n";
+        return;
+    }
+
+    File << "graph G {\n";
+
+    //Writes edge vertices as nodes
+    for (size_t i = 0; i < output.size(); i++) {
+        File << "\t" << i << " [label=\"(" << output[i].x << "," << output[i].y << ")\"];\n";
+    }
+
+    //Draws edges representing the convex hull
+    for (size_t i = 0; i < output.size(); i++) {
+        size_t nextIndex = (i + 1) % output.size();
+        File << "\t" << i << " -- " << nextIndex << " [color=\"blue\"];\n";
+    }
+
+    //Writes other points to the dot file
+    for (size_t i = 0; i < otherPoints.size(); i++) {
+        File << "\t" << i + output.size() << " [label=\"(" << otherPoints[i].x << "," << otherPoints[i].y << ")\"];\n";
+    }
+
+    //Fills in convex hull nodes with the color blue
+    for (size_t i = 0; i < output.size(); i++) {
+        File << "\t" << i << " ";
+        File << "[color=\"lightblue\", style=filled];\n";
+    }
+    File << "}\n";
+    File.close();
 }
+
+
+
+
+
+
+
+
+
+
