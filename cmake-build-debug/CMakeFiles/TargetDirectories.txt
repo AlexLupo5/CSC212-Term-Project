@@ -1,3 +1,0 @@
-C:/Users/there/OneDrive/Documents/GitHub/CSC212-Term-Project/cmake-build-debug/CMakeFiles/CSC212_Term_Project.dir
-C:/Users/there/OneDrive/Documents/GitHub/CSC212-Term-Project/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/there/OneDrive/Documents/GitHub/CSC212-Term-Project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
