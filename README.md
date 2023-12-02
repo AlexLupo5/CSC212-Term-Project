@@ -20,6 +20,7 @@ Problem/Solution:
 convexHull (version 3)
   * convexHull can be called in main by convexHull "name of objext"("file name");
   * convexHull.cpp also allows the user to print the output to the terminal or to a dot file by either calling "name of object".print() or "name of object".dot() in the main.cpp file.
+  * .dot file can be visualized by copying and pasting it into https://dreampuf.github.io/GraphvizOnline/
 
 **Instructions**
 1. Copy convexHull.cpp (version 3) and convexHull.h (version 3) into your program IDE of choice.
