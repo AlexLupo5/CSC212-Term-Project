@@ -1,5 +1,6 @@
 #include <iostream>
 #include "convexHull.h"
+#include <cmath>
 
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
