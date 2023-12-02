@@ -1,5 +1,3 @@
-#include "convexHull.h"
-#include <iostream>
 #include <string>
 #include <fstream>
 #include <sstream>
@@ -13,8 +11,9 @@
 int main(int argc, char*argv[]) {
 
     convexHull shape((std::string(argv[1]))); //Creates an object of convexHull, in provided main.cpp object is called shape
-shape.print(); //Prints the convexHull output to terminal
-shape.dot(); //Prints the convexHull output to a .dot file
+    shape.print(); //Prints the convexHull output to terminal
+    shape.dot(); //Prints the convexHull output to a .dot file
+    shape.dot2();
 
     return 0;
 }
