@@ -31,7 +31,7 @@ void convexHull::convexHullSolve(Point points[], int size){
         int y = points[i].y;
 
         if ((y < lowesty) || ((lowesty == y
-        && points[i].x < points[lowestval].x))){
+                               && points[i].x < points[lowestval].x))){
             lowesty = points[i].y;
             lowestval = i;
         }
@@ -43,7 +43,7 @@ void convexHull::convexHullSolve(Point points[], int size){
 
     temp = points[0];
 
-std::vector <Point> pointSort;
+    std::vector <Point> pointSort;
     for(int i = 1; i < pointsTemp.size(); i++) {
         pointSort.push_back(points[i]);
     }
@@ -66,10 +66,10 @@ std::vector <Point> pointSort;
                 }
             } else {
 
-            if (polarAngle(pointSort[ang].x - points[0].x,
-                           pointSort[ang].y - points[0].y) >
-                polarAngle(pointSort[j].x - points[0].x,
-                           pointSort[j].y - points[0].y)) {
+                if (polarAngle(pointSort[ang].x - points[0].x,
+                               pointSort[ang].y - points[0].y) >
+                    polarAngle(pointSort[j].x - points[0].x,
+                               pointSort[j].y - points[0].y)) {
                     ang = j;
                 }
             }
@@ -120,7 +120,7 @@ double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of 
 
 int convexHull::orientation(Point point1, Point point2, Point point3){
     int orient = (point2.y - point1.y) * (point3.x - point2.x)
-            - (point2.x - point1.x) * (point3.y - point2.y);
+                 - (point2.x - point1.x) * (point3.y - point2.y);
 
     //Colinear
     if (orient >= 0) {
@@ -182,7 +182,7 @@ void convexHull::convertToPoint() { //convertToPoint function
 }
 
 void convexHull::print() {
-std::vector<Point> out = output;
+    std::vector<Point> out = output;
 
     while (out.size() > 0){
         Point point = out[out.size()-1];
@@ -194,6 +194,30 @@ std::vector<Point> out = output;
 void convexHull::dot() {
     std::vector<Point> out = output;
     std::ofstream File("convexHull.dot"); // Create or open a dot file named "output.dot"
+
+    if (!File.is_open()) {
+        std::cout << "Could not open the dot file." << std::endl;
+    }
+
+    if(pointsTemp.size() < 3) {
+        //File << "Convex Hull is not possible" << std::endl;
+    }
+
+    else {
+        while (out.size() > 0) {
+            Point point = out[out.size() - 1];
+            File << "(" << point.x << "," << point.y << ")";
+            if (out.size() > 1) {
+                File << "\n";
+            }
+            out.pop_back();
+        }
+    }
+}
+
+void convexHull::dot2() {
+    std::vector<Point> out = pointsTemp;
+    std::ofstream File("convexHull2.dot"); // Create or open a dot file named "output.dot"
 
     if (!File.is_open()) {
         std::cout << "Could not open the dot file." << std::endl;
