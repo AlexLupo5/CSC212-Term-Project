@@ -1,5 +1,8 @@
 #include <iostream>
+#include <cmath>
 #include "convexHull.h"
+
+const int PI = 3.14159265359;
 
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
@@ -137,7 +140,7 @@ int convexHull::distance(Point point1, Point point2){
 
 double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
     //return atanf(y/x) * 180/3.14159265359;
-    return std::atan2(y, x) * (180.0 / M_PI);
+    return std::atan2(y, x) * (180.0 / PI);
 }
 
 int convexHull::orientation(Point point1, Point point2, Point point3){
@@ -183,34 +186,40 @@ int convexHull::orientation(Point point1, Point point2, Point point3){
 void convexHull::convertToPoint() {
     //Reads through the inputFile and puts all x coordinates into
     //points.x vector and all y coordinates in points.y vector
-    std::ifstream infile(fileName);
-    std::string line;
-    int num = 0;
-    std::string x;
 
-    while (getline(infile, line)) {
-        std::stringstream strLine(line);
-        int tempx = 0;
-        int tempy = 0;
-        while (strLine >> x) {
-            //std::cout << x << " ";
-            std::string temp = "";
+    std::ifstream infile(this->fileName);
+    if (!infile.is_open()) {
+        std::cerr << "Error: Unable to open file '" << this->fileName << "'" << std::endl;
+    }
+    else {
+        std::string line;
+        int num = 0;
+        std::string x;
 
-            int i = 1;
-            while (x[i] != ',') {
-                temp += x[i];
+        while (getline(infile, line)) {
+            std::stringstream strLine(line);
+            int tempx = 0;
+            int tempy = 0;
+            while (strLine >> x) {
+                //std::cout << x << " ";
+                std::string temp = "";
+
+                int i = 1;
+                while (x[i] != ',') {
+                    temp += x[i];
+                    i++;
+                }
+                tempx = std::stoi(temp);
                 i++;
+                temp.clear();
+                while (x[i] != ')') {
+                    temp += x[i];
+                    i++;
+                }
+                tempy = std::stoi(temp);
             }
-            tempx = std::stoi(temp);
-            i++;
-            temp.clear();
-            while (x[i] != ')') {
-                temp += x[i];
-                i++;
-            }
-            tempy = std::stoi(temp);
+            pointsTemp.push_back({tempx, tempy});
         }
-        pointsTemp.push_back({tempx, tempy});
     }
 }
 
