@@ -200,7 +200,7 @@ void convexHull::print() {
 
 void convexHull::dot() {
     std::vector<Point> out = output;
-    std::ofstream File("convexHull.dot"); // Create or open a dot file named "output.dot"
+    std::ofstream File("convexHull.dot"); // Create or open a dot file named "convexHull.dot"
 
     if (!File.is_open()) {
         std::cout << "Could not open the dot file." << std::endl;
@@ -224,7 +224,7 @@ void convexHull::dot() {
 
 void convexHull::dot2() {
     std::vector<Point> out = pointsTemp;
-    std::ofstream File("convexHull2.dot"); // Create or open a dot file named "output.dot"
+    std::ofstream File("convexHull2.dot"); // Create or open a dot file named "convexHull2.dot"
 
     if (!File.is_open()) {
         std::cout << "Could not open the dot file." << std::endl;
@@ -247,8 +247,8 @@ void convexHull::dot2() {
 }
 
 void convexHull::nonSFMLDot() {
-    //Creating a dot file
-    std::ofstream File("convexHull.dot");
+    //Creating a dot file named "convexHull_Graphviz.dot"
+    std::ofstream File("convexHull_Graphviz.dot"); 
 
     //Initializing vector of points for points that aren't edge vertices
     std::vector<Point> otherPoints;
