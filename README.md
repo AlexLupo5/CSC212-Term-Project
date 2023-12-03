@@ -25,7 +25,7 @@ convexHull (version 4)
 
 # Instructions:
 
-## Setup
+<h2 align="center">Setup</h2>
 
 This project was created using CLion.
 
@@ -59,7 +59,7 @@ The external library SFML was used in this project.
 
 Follow the SFML documentation instructions [here](https://www.sfml-dev.org/tutorials/2.6/).
 
-## Project Instructions
+<h2 align="center">Project Instructions</h2>
 
 ---
 
