@@ -8,10 +8,6 @@ convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
     convertToPoint();
 
-    if(pointsTemp.size() < 3) {
-        std::cout << "Convex Hull is not possible" << std::endl;
-    }
-
     Point points[pointsTemp.size()];
 
     for(int i = 0; i < pointsTemp.size(); i++) {
@@ -184,6 +180,9 @@ void convexHull::convertToPoint() { //convertToPoint function
 }
 
 void convexHull::print() {
+    if(pointsTemp.size() < 3 || output.empty()) {
+        std::cout << "Convex Hull is not possible" << std::endl;
+    }
 
     std::vector<Point> out = output;
 
