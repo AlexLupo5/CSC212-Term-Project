@@ -166,18 +166,9 @@ void convexHull::convertToPoint() { //convertToPoint function
             }
             tempy = std::stoi(temp);
         }
-
-        bool duplCheck = false; //Check for duplicate points
-        for(int j = 0; j < pointsTemp.size(); j++) {
-            if((pointsTemp[j].x == tempx) && (pointsTemp[j].y == tempy)) {
-                duplCheck = true;
-            }
-        }
-        if(duplCheck == false) {
             pointsTemp.push_back({tempx, tempy});
         }
     }
-}
 
 void convexHull::print() {
     if(pointsTemp.size() < 3) {
