@@ -18,6 +18,7 @@ int main(int argc, char*argv[]) {
     shape.print(); //Prints the convexHull output to terminal
     shape.dot(); //Prints the convexHull output to a .dot file
     shape.dot2();
+    shape.nonSFMLDot(); //Writes convex hull in format to be read by Graphviz (https://dreampuf.github.io/GraphvizOnline/)
 
     return 0;
 }
