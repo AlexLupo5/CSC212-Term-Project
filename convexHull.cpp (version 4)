@@ -2,6 +2,8 @@
 #include "convexHull.h"
 #include <cmath>
 
+const int PI = 3.14159265359;
+
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
     convertToPoint();
@@ -115,7 +117,7 @@ Point convexHull::Top(std::vector<Point> &vect){
 }
 
 double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
-    return std::atan2(y, x) * (180.0 / M_PI);
+    return std::atan2(y, x) * (180.0 / PI);
 }
 
 int convexHull::orientation(Point point1, Point point2, Point point3){
