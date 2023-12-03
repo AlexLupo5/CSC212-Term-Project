@@ -184,6 +184,11 @@ void convexHull::convertToPoint() { //convertToPoint function
 }
 
 void convexHull::print() {
+    if (output.empty()) {
+        std::cout << "Cannot construct convex hull";
+        return;
+    }
+
     std::vector<Point> out = output;
 
     while (out.size() > 0){
