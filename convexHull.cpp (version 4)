@@ -266,6 +266,10 @@ void convexHull::nonSFMLDot() {
         }
     }
 
+    if (output.size() == 0) {
+        return;
+    }
+
     //Convex hull requires a minimum of 3 points
     if (output.size() < 3) {
         File << "Convex Hull is not possible" << std::endl;
