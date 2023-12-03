@@ -27,7 +27,7 @@ convexHull (version 4)
 ---
 
 
-<h2 align="center">Setup Instructions:</h2>
+<h2 align="center">Setup Instructions</h2>
 
 This project was created using CLion.
 
