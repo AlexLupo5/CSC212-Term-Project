@@ -22,8 +22,10 @@ convexHull (version 4)
   * convexHull.cpp also allows the user to print the output to the terminal or to a dot file by either calling "name of object".print() or "name of object".dot() in the main.cpp file.
   * convexHull.dot and convexHull2.dot files can be visualized by using graph.cpp
   * convexHullGraphviz.dot file can be visualized by copying and pasting it into https://dreampuf.github.io/GraphvizOnline/
+
  
 ---
+
 
 <h2 align="center">Setup Instructions:</h2>
 
