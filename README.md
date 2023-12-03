@@ -23,9 +23,7 @@ convexHull (version 4)
   * convexHull.dot and convexHull2.dot files can be visualized by using graph.cpp
   * convexHullGraphviz.dot file can be visualized by copying and pasting it into https://dreampuf.github.io/GraphvizOnline/
 
-# Instructions:
-
-<h2 align="center">Setup</h2>
+<h2 align="center">Setup Instructions:</h2>
 
 This project was created using CLion.
 
