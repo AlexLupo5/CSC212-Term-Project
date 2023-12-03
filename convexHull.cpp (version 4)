@@ -181,7 +181,7 @@ void convexHull::convertToPoint() { //convertToPoint function
 
 void convexHull::print() {
     if(pointsTemp.size() < 3 || output.empty()) {
-        std::cout << "Convex Hull is not possible" << std::endl;
+        std::cout << "Cannot construct Convex Hull" << std::endl;
     }
 
     std::vector<Point> out = output;
