@@ -1,1 +1,36 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <fstream>
+#include <vector>
+#include "graph.h"
 
+int main(int argc, char*argv[]) {
+
+    int shapeCount = 0;
+    while (argv[shapeCount]) {
+        shapeCount++;
+    }
+    shapeCount = shapeCount - 1;
+
+    if (shapeCount == 1) {
+        std::string temp1 = std::string(argv[1]);
+
+        graph shape(temp1, shapeCount);
+    }
+
+    if (shapeCount == 2) {
+        std::string temp1 = std::string(argv[1]);
+        std::string temp2 = std::string(argv[2]);
+
+        graph shape(temp1, temp2, shapeCount);
+    }
+    if (shapeCount == 3) {
+        std::string temp1 = std::string(argv[1]);
+        std::string temp2 = std::string(argv[2]);
+        std::string temp3 = std::string(argv[3]);
+        graph shape(temp1, temp2, temp3, shapeCount);
+    }
+
+    return 0;
+
+}
