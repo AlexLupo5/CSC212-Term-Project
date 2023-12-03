@@ -184,10 +184,6 @@ void convexHull::convertToPoint() { //convertToPoint function
 }
 
 void convexHull::print() {
-    if (output.empty()) {
-        std::cout << "Cannot construct convex hull";
-        return;
-    }
 
     std::vector<Point> out = output;
 
@@ -248,7 +244,11 @@ void convexHull::dot2() {
 
 void convexHull::nonSFMLDot() {
     //Creating a dot file named "convexHull_Graphviz.dot"
-    std::ofstream File("convexHull_Graphviz.dot"); 
+    std::ofstream File("convexHull_Graphviz.dot");
+
+    if (!File.is_open()) {
+        std::cout << "Could not open the dot file." << std::endl;
+    }
 
     //Initializing vector of points for points that aren't edge vertices
     std::vector<Point> otherPoints;
@@ -269,10 +269,6 @@ void convexHull::nonSFMLDot() {
         if (!isInConvexHull) {
             otherPoints.push_back(point);
         }
-    }
-
-    if (output.size() == 0) {
-        return;
     }
 
     //Convex hull requires a minimum of 3 points
