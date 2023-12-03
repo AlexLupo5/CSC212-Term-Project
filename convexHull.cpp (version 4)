@@ -273,8 +273,7 @@ void convexHull::nonSFMLDot() {
 
     //Convex hull requires a minimum of 3 points
     if (output.size() < 3) {
-        File << "Convex Hull is not possible" << std::endl;
-        File << "\ngraph G {\n";
+        File << "graph G {\n";
         //Writes only the points to the file (no edges)
         for (size_t i = 0; i < pointsTemp.size(); i++) {
             File << "\t" << i << " [label=\"(" << pointsTemp[i].x << "," << pointsTemp[i].y << ")\"];\n";
