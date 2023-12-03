@@ -241,8 +241,8 @@ void convexHull::dot2() {
 }
 
 void convexHull::nonSFMLDot() {
-    //Creating a dot file named "convexHull_Graphviz.dot"
-    std::ofstream File("convexHull_Graphviz.dot");
+    //Creating a dot file named "convexHullGraphviz.dot"
+    std::ofstream File("convexHullGraphviz.dot");
 
     if (!File.is_open()) {
         std::cout << "Could not open the dot file." << std::endl;
