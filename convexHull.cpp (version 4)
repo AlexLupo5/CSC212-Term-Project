@@ -180,7 +180,13 @@ void convexHull::convertToPoint() { //convertToPoint function
 }
 
 void convexHull::print() {
-    if(pointsTemp.size() < 3 || output.empty()) {
+    if(pointsTemp.size() < 3) {
+        std::cout << "Requires 3 or more points" << std::endl;
+        std::cout << "Cannot construct Convex Hull" << std::endl;
+    }
+
+    if(output.empty()) {
+        std::cout << "No Convex Hull points" << std::endl;
         std::cout << "Cannot construct Convex Hull" << std::endl;
     }
 
