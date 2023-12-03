@@ -4,7 +4,7 @@
 
 sf::RenderWindow graphOutput(sf::VideoMode(800, 600), "Convex Hull Grapher");
 
-std::vector<sf::Vector2f> readFile(const std::string& filename) {
+std::vector<sf::Vector2f> readFile(std::string filename) {
     std::ifstream infile(filename);
     std::vector<sf::Vector2f> points;
 
@@ -250,31 +250,25 @@ void graph::plot() {
         graphOutput.clear();
 
         if(shapeCount >= 1) {
-            int size1 = greenLines.size();
-            graphOutput.draw(greenLines.data(), size1, sf::Lines);
             graphOutput.draw(greenShape);
 
-            for (int i = 0; i < size1; ++i) {
+            for (int i = 0; i < greenCircles.size(); ++i) {
                 graphOutput.draw(greenCircles[i]);
             }
         }
 
         if(shapeCount >= 2) {
-            int size2 = blueLines.size();
-            graphOutput.draw(blueLines.data(), size2, sf::Lines);
             graphOutput.draw(blueShape);
 
-            for (int i = 0; i < size2; ++i) {
+            for (int i = 0; i < blueCircles.size(); ++i) {
                 graphOutput.draw(blueCircles[i]);
             }
         }
 
         if(shapeCount >= 3) {
-            int size3 = redLines.size();
-            graphOutput.draw(redLines.data(), size3, sf::Lines);
             graphOutput.draw(redShape);
 
-            for (int i = 0; i < size3; ++i) {
+            for (int i = 0; i < redCircles.size(); ++i) {
                 graphOutput.draw(redCircles[i]);
             }
         }
