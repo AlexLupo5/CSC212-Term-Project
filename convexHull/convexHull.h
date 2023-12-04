@@ -26,6 +26,7 @@ public:
 
     void print();
     void dot(std::string outputName);
+    void nonSFMLDot();
 
     double polarAngle(double x, double y); //Returns the polarAngle of the given (x2- x1,y2- y1) coordinates
 
