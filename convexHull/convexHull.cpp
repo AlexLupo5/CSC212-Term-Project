@@ -191,6 +191,25 @@ void convexHull::print() {
     }
 }
 
+void convexHull::dot(std::string outputName) {
+    std::vector<Point> out = output;
+    std::ofstream File(outputName); // Create or open a dot file named "output.dot"
+
+    if (!File.is_open()) {
+        std::cout << "Could not open the dot file." << std::endl;
+    }
+    else {
+        while (out.size() > 0) {
+            Point point = out[out.size() - 1];
+            File << "(" << point.x << "," << point.y << ")";
+            if (out.size() > 1) {
+                File << "\n";
+            }
+            out.pop_back();
+        }
+    }
+}
+
 void convexHull::nonSFMLDot() {
     //Creating a dot file named "convexHullGraphviz.dot"
     std::ofstream File("convexHullGraphviz.dot");
