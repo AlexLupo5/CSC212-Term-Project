@@ -81,7 +81,7 @@ In CLion, create a project using C++ 11, titled `convexHull`.
 3. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
 4. Refactor the `CMakeLists.txt` if needed.
 5. Choose a text file with text in the specified format for parsing (test files can be found in the `test_cases` folder)
-6. In the `convexHull` project, run these two lines separately in the terminal (allows for one Txt file argument):
+6. In the `convexHull` project, run these two lines separately in the terminal (allows for one text file argument):
 
     ```
     g++ -std=c++11 main.cpp convexHull.cpp -o gen
@@ -89,7 +89,7 @@ In CLion, create a project using C++ 11, titled `convexHull`.
     ```
 
 
-    A dotfile will be created named `convexHullGraphviz.dot`. The terminal will output the Convex Hull points or an error message if it fails to construct from the txt file values.
+    A dotfile will be created named `convexHullGraphviz.dot`. The terminal will output the Convex Hull points or an error message if it fails to construct from the text file values.
    
 
     The `convexHullGraphviz.dot` cannot be visualized with our SFML implementation and is meant to be copied and pasted into the Graphviz website ([Graphviz Online](https://dreampuf.github.io/GraphvizOnline/)).
@@ -114,9 +114,9 @@ In CLion, create a project using C++ 11, titled `convexHull` with SFML:
    ...
     ```
   
-8. After creating your data sets in the txt file(s), drag each txt file into the cmake folder `cmake-build-debug` located on the left side of the project.
+8. After creating your data sets in the txt file(s), drag each text file into the cmake folder `cmake-build-debug` located on the left side of the project.
 9. Next navigate to the top right of your project in clion and locate the three dots next to the debug button
-10. Click on the three dots followed by `Edit...` where you can then input up to three txt file inputs in program arguments:
+10. Click on the three dots followed by `Edit...` where you can then input up to three text file inputs in program arguments:
 
     Ex: test1.txt test2.txt test3.txt
     
@@ -125,7 +125,7 @@ In CLion, create a project using C++ 11, titled `convexHull` with SFML:
 
     Up to three dotfiles named `convexHull_#.dot` will be created depending on the number of file          arguments provided. The terminal will also output the Convex Hull points of each file.
 
-    In the rare case that the dot files do not get automatically put into the cmake-build-debug:
+    In the rare case that the dotfiles do not get automatically put into the cmake-build-debug:
     
     Drag the three desired `convexHull.dot` file(s) from the `convexHull` project and put them in the      `cmake-build-debug` folder in the `convexHull` project.
     ```
