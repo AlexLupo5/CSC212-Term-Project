@@ -15,6 +15,7 @@
 int main(int argc, char*argv[]) {
 
     convexHull shape((std::string(argv[1]))); //Creates an object of convexHull, in provided main.cpp object is called shape
+    std::cout << "Convex Hull of:" << argv[1] << std::endl;
     shape.print(); //Prints the convexHull output to terminal
     shape.nonSFMLDot(); //Writes convex hull in format to be read by Graphviz (https://dreampuf.github.io/GraphvizOnline/)
 
