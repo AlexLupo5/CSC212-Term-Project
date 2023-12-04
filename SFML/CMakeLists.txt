@@ -1,11 +1,13 @@
 cmake_minimum_required(VERSION 3.14)
-project(HelloSFML)
+project(INSERT PROJECT NAME)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 
 set(SOURCE_FILES main.cpp
         graph.h
         graph.cpp
+        convexHull.cpp
+        convexHull.h
 )
 add_executable(HelloSFML ${SOURCE_FILES})
 include_directories(/usr/local/include)
