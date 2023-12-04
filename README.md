@@ -97,7 +97,8 @@ In CLion, create a project using C++ 11, titled `convexHull`.
 **WITH SFML:**
 
 In CLion, create a project using C++ 11, titled `convexHull` with SFML:
-/Users/"Computer Name"/CLionProjects/SFML/convexHull
+
+  Ex:  /Users/"Computer Name"/CLionProjects/SFML/convexHull
 
 1. Inside the `convexHull` project, create the files `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h`.
 2. Remove any content inside the files if there is any
