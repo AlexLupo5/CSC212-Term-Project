@@ -1,0 +1,136 @@
+#include <SFML/Graphics.hpp>
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+// Function to read points from a dot file
+std::vector<sf::Vector2f> readPointsFromFile(const std::string& filename) {
+    std::ifstream file(filename);
+    std::vector<sf::Vector2f> points;
+
+    if (file.is_open()) {
+        char discard; // Variable to discard the '(' and ',' characters
+        float x, y;
+
+        // Read points in the form (x, y)
+        while (file >> discard >> x >> discard >> y >> discard) {
+            points.emplace_back(x, y);
+        }
+
+        file.close();
+    } else {
+        std::cerr << "Unable to open file: " << filename << std::endl;
+    }
+
+    return points;
+}
+
+int main() {
+    const std::string filename = "points.dot"; // Change this to your first dot file name
+    const std::string filenameBlue = "points2.dot"; // Change this to your second dot file name
+
+    // Read points from dot files
+    std::vector<sf::Vector2f> points = readPointsFromFile(filename);
+    std::vector<sf::Vector2f> pointsBlue = readPointsFromFile(filenameBlue);
+
+    // Find the minimum and maximum coordinates for both sets of points
+    float minX = 0.0f, minY = 0.0f, maxX = 0.0f, maxY = 0.0f;
+    for (const auto& point : points) {
+        if (point.x < minX) minX = point.x;
+        if (point.y < minY) minY = point.y;
+        if (point.x > maxX) maxX = point.x;
+        if (point.y > maxY) maxY = point.y;
+    }
+
+    for (const auto& point : pointsBlue) {
+        if (point.x < minX) minX = point.x;
+        if (point.y < minY) minY = point.y;
+        if (point.x > maxX) maxX = point.x;
+        if (point.y > maxY) maxY = point.y;
+    }
+
+    // Calculate the range of coordinates
+    float rangeX = std::max(std::abs(minX), std::abs(maxX));
+    float rangeY = std::max(std::abs(minY), std::abs(maxY));
+
+    // Create the SFML window
+    sf::RenderWindow window(sf::VideoMode(800, 600), "SFML Dot File Shape");
+
+    // Set the coordinate system based on the range
+    window.setView(sf::View(sf::FloatRect(2 * -rangeX, 2 * -rangeY, 4 * rangeX, 4 * rangeY)));
+
+    // Create a shape using the read points
+    sf::ConvexShape shape;
+    shape.setPointCount(points.size());
+    for (size_t i = 0; i < points.size(); ++i) {
+        shape.setPoint(i, points[i]);
+    }
+    shape.setFillColor(sf::Color::Green); // Change fill color if needed
+    shape.setOutlineColor(sf::Color::Black); // Change outline color if needed
+    shape.setOutlineThickness(0.1); // Change outline thickness if needed
+
+    // Create circles to mark the points (green)
+    std::vector<sf::CircleShape> circles;
+    for (const auto& point : points) {
+        sf::CircleShape circle(0.1); // Adjust the circle radius as needed
+        circle.setFillColor(sf::Color::Green); // Change circle color if needed
+        circle.setPosition(point);
+        circle.setOrigin(0.1, 0.1); // Center the origin of the circle at its position
+        circles.push_back(circle);
+    }
+
+    // Create circles to mark the points (blue)
+    std::vector<sf::CircleShape> circlesBlue;
+    for (const auto& point : pointsBlue) {
+        sf::CircleShape circle(0.1); // Adjust the circle radius as needed
+        circle.setFillColor(sf::Color::Blue); // Change circle color if needed
+        circle.setPosition(point);
+        circle.setOrigin(0.1, 0.1); // Center the origin of the circle at its position
+        circlesBlue.push_back(circle);
+    }
+
+    // Create lines between consecutive points
+    std::vector<sf::Vertex> lines;
+    for (size_t i = 0; i < points.size(); ++i) {
+        sf::Vertex line[] = {
+                sf::Vertex(points[i]),
+                sf::Vertex(points[(i + 1) % points.size()]) // Connects the last point with the first one
+        };
+        lines.push_back(line[0]);
+        lines.push_back(line[1]);
+    }
+
+    // Main loop
+    while (window.isOpen()) {
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed) {
+                window.close();
+            }
+        }
+
+        // Clear the window
+        window.clear(sf::Color::White);
+
+        // Draw the lines
+        window.draw(lines.data(), lines.size(), sf::Lines);
+
+        // Draw the shape
+        window.draw(shape);
+
+        // Draw circles to mark the points (green)
+        for (const auto& circle : circles) {
+            window.draw(circle);
+        }
+
+        // Draw circles to mark the points (blue)
+        for (const auto& circle : circlesBlue) {
+            window.draw(circle);
+        }
+
+        // Display content
+        window.display();
+    }
+
+    return 0;
+}
