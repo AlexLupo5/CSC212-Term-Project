@@ -60,13 +60,36 @@ The external library SFML was used in this project.
 
 **MacOS:**
 
-1. Download homebrew from [here](https://brew.sh/).
-2. Open the terminal and run the command provided on the website to install homebrew.
-3. Type `brew install sfml` in the terminal to install SFML.
+To download SFML for MacOS first you have to download homebrew
+
+1. Use this link to go to the homebrew website: https://brew.sh/
+
+2. On Homebrew's website the line below is provided:
+   ```
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   ```
+
+3. Open the terminal on your computer and run the provided command
+
+4. It should then download homebrew onto your computer.  If there are any errors, a warning will pop up on the terminal and give further instructions
+
+5. Then after homebrew is downloaded type the following line in the computer terminal:
+    ```
+   brew install sfml
+    ```
+    
+SFML will then be installed on your computer
+
 
 **Windows:**
 
-Follow the SFML documentation instructions [here](https://www.sfml-dev.org/tutorials/2.6/).
+You can find the SFML official instructions on there website located [here](https://www.sfml-dev.org/tutorials/2.6/).
+Below will be provided basic instructions on install
+
+1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
+2. Select the dowload that works with your IDE
+3. 
+
 
 <h2 align="center">Project Instructions</h2>
 
