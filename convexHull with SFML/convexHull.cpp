@@ -23,10 +23,10 @@ convexHull::~convexHull(){
 }
 
 void convexHull::convexHullSolve(Point points[], int size){
-    int lowesty = points[0].y;
+    double lowesty = points[0].y;
     int lowestval = 0;
     for (int i = 0; i < size; i++){
-        int y = points[i].y;
+        double y = points[i].y;
 
         if ((y < lowesty) || ((lowesty == y
                                && points[i].x < points[lowestval].x))){
