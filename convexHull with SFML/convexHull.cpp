@@ -2,40 +2,40 @@
 #include "convexHull.h"
 #include <cmath>
 
-const double PI = 3.14159265359;
+const double PI = 3.14159265359; // Variable for PI
 
 convexHull::convexHull(std::string fileName) {
-    this->fileName = fileName;
-    convertToPoint();
+    this->fileName = fileName; // Set fileName of .txt file
+    convertToPoint(); //convert the lines on the file to points in a vector (pointsTemp)
 
-    Point points[pointsTemp.size()];
+    Point points[pointsTemp.size()]; // Creates an array of points with size equal to pointsTemp.size()
 
     for(int i = 0; i < pointsTemp.size(); i++) {
-        points[i].x = pointsTemp[i].x;
+        points[i].x = pointsTemp[i].x;   ///Sets the points from the vector to the point array.
         points[i].y = pointsTemp[i].y;
     }
 
-    convexHullSolve(points, pointsTemp.size());
+    convexHullSolve(points, pointsTemp.size()); //call the convexHullSolve function
 }
 
-convexHull::~convexHull(){
+convexHull::~convexHull(){ //convexHull deconstructor
 
 }
 
-void convexHull::convexHullSolve(Point points[], int size){
-    double lowesty = points[0].y;
-    int lowestval = 0;
-    for (int i = 0; i < size; i++){
+void convexHull::convexHullSolve(Point points[], int size){ //convexHullSolve function
+    double lowesty = points[0].y; //set lowesty equal to point[0].y
+    int lowestval = 0; //create an index variable for the lowest y value, set the default index to 0
+    for (int i = 0; i < size; i++){ //find the lowest y point
         double y = points[i].y;
 
         if ((y < lowesty) || ((lowesty == y
-                               && points[i].x < points[lowestval].x))){
-            lowesty = points[i].y;
-            lowestval = i;
+                               && points[i].x < points[lowestval].x))){ //if the points have the same y point then check for the further away x point
+            lowesty = points[i].y; //set the lowesty = to the new lowest y
+            lowestval = i; //set the index value
         }
     }
 
-    Point ptemp = points[0];
+    Point ptemp = points[0]; //create a temp point
     points[0] = points[lowestval];
     points[lowestval] = ptemp;
 
@@ -147,45 +147,45 @@ void convexHull::convertToPoint() { //convertToPoint function
         std::stringstream strLine(line);
         double tempx = 0;
         double tempy = 0;
-        while (strLine >> x) {
-            std::string temp = "";
+        while (strLine >> x) {                    ///Reads through the file and takes in all x and y coordinates
+            std::string temp = "";       
 
             int i = 1;
-            while (x[i] != ',') {
+            while (x[i] != ',') {            ///Once a comma is reached, we know that it is time to add the x coordinate to the temp str w/o including the comma
                 temp += x[i];
                 i++;
             }
-            tempx = std::stod(temp);
+            tempx = std::stod(temp);            ///Converts the string value to a double
             i++;
-            temp.clear();
+            temp.clear();                    ///Clear the temp string to allocate space for storing y coordinates 
 
-            while (x[i] != ')') {
-                temp += x[i];
+            while (x[i] != ')') {            ///Once a closed parenthesis is reached we know the previous value is the y coordinate so the while loop breaks
+                temp += x[i];            ///Stores y coord. in temp str
                 i++;
             }
-            tempy = std::stod(temp);
+            tempy = std::stod(temp);        ///Converts str value y to double
         }
-        pointsTemp.push_back({tempx, tempy});
+        pointsTemp.push_back({tempx, tempy});    ////Pushes that specific x,y coordinate into the temp vec declared in .h
     }
 }
 
 void convexHull::print() {
     if(pointsTemp.size() < 3) {
         std::cout << "Requires 3 or more points" << std::endl;
-        std::cout << "Cannot construct Convex Hull" << std::endl;
+        std::cout << "Cannot construct Convex Hull" << std::endl;            ///To construct a convex hull, oriented as a polygonal structure requires atleast 3 points
         return;
     }
 
     if(output.empty()) {
         std::cout << "No Convex Hull points" << std::endl;
-        std::cout << "Cannot construct Convex Hull" << std::endl;
+        std::cout << "Cannot construct Convex Hull" << std::endl;        ///If no points are given convex hull cannot be created 
         return;
     }
 
     std::vector<Point> out = output;
 
     while (out.size() > 0){
-        Point point = out[out.size()-1];
+        Point point = out[out.size()-1];                        ///Prints out each point
         std::cout << "(" << point.x << ", " << point.y <<")\n";
         out.pop_back();
     }
