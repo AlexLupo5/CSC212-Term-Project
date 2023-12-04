@@ -80,7 +80,7 @@ In CLion, create a project using C++ 11, titled `convexHull`.
     ./gen convexHull.txt
     ```
 
-    Three dot files will be created named `convexHull.dot`, `convexHull2.dot`, and `convexHullGraphviz.dot`. The terminal will output the Convex Hull points or an error message if it fails to construct from the txt file values.
+    Two dot files will be created named `convexHull.dot` and `convexHullGraphviz.dot`. The terminal will output the Convex Hull points or an error message if it fails to construct from the txt file values.
 
     To produce a visualization of the convex hull, `convexHull.dot` and `convexHull2.dot` files require SFML.
 
@@ -105,16 +105,16 @@ In CLion, create two separate projects both using C++ 11, one titled `convexHull
     ./gen convexHull.txt
     ```
 
-    Three dot files will be created named `convexHull.dot`, `convexHull2.dot`, and `convexHull_Graphviz.dot`. Also, the terminal will also output the Convex Hull points.
+    Two dot files will be created named `convexHull.dot`,  and `convexHullGraphviz.dot`. Also, the terminal will output the Convex Hull points.
 
-    Take the `convexHull.dot` and `convexHull2.dot` files from the `convexHull` project and put them in the `cmake-build-debug` folder in the `HelloSFML` project.
+    Take the `convexHull.dot` file from the `convexHull` project and put them in the `cmake-build-debug` folder in the `HelloSFML` project.
 
     Then in the top right corner of CLion, press the `HelloSFML` tab and press `Edit Configurations`.
 
     Inside of the `Edit Configurations`, copy and paste this into the Program arguments:
 
     ```
-    convexHull.dot convexHull2.dot
+    convexHull.dot
     ```
 
     Then click the OK button and press the play button in the upper right corner of CLion, and it will output the graph of the Convex Hull.
