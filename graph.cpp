@@ -14,8 +14,8 @@ std::vector<sf::Vector2f> readFile(std::string filename) {
     while (getline(infile, line)) {
         std::stringstream strLine(line);
 
-        int tempx = 0;
-        int tempy = 0;
+        double tempx = 0;
+        double tempy = 0;
         while (strLine >> x) {
             std::string temp = "";
 
@@ -24,7 +24,7 @@ std::vector<sf::Vector2f> readFile(std::string filename) {
                 temp += x[i];
                 i++;
             }
-            tempx = std::stoi(temp);
+            tempx = std::stod(temp);
             i++;
             temp.clear();
 
@@ -32,7 +32,7 @@ std::vector<sf::Vector2f> readFile(std::string filename) {
                 temp += x[i];
                 i++;
             }
-            tempy = std::stoi(temp);
+            tempy = std::stod(temp);
         }
         points.emplace_back(tempx, tempy);
     }
@@ -156,7 +156,11 @@ void graph::sizeWindow(){
     double rangeX = std::max(abs(minX), abs(maxX));
     double rangeY = std::max(abs(minY), abs(maxY));
 
-    graphOutput.setView(sf::View(sf::FloatRect((-2 * rangeX), (-2 * rangeY), (4 * rangeX), (4 * rangeY))));
+    //graphOutput.setView(sf::View(sf::FloatRect((-2 * rangeX), (-2 * rangeY), (4 * rangeX), (4 * rangeY))));
+    sf::View view;
+    view.setSize(((maxX-minX + (maxX-minX)/10)), -(maxY-minY + (maxY-minY)/10));
+    view.setCenter((maxX+minX)/2, (maxY+minY)/2);
+    graphOutput.setView(view);
 
     return;
 
@@ -223,21 +227,29 @@ void graph::setColors() {
 
     greenShape.setFillColor(sf::Color(0, 255, 0, 75)); //Set greenShape plot color to green
     greenShape.setOutlineColor(sf::Color::Green);
-    greenShape.setOutlineThickness(2);
+    greenShape.setOutlineThickness((maxY-minY)/100);
 
     blueShape.setFillColor(sf::Color(0, 0, 255, 75)); //Set greenShape plot color to blue
     blueShape.setOutlineColor(sf::Color::Blue);
-    blueShape.setOutlineThickness(2);
+    blueShape.setOutlineThickness((maxY-minY)/100);
 
     redShape.setFillColor(sf::Color(255, 0, 0, 75)); //Set greenShape plot color to red
     redShape.setOutlineColor(sf::Color::Red);
-    redShape.setOutlineThickness(2);
+    redShape.setOutlineThickness((maxY-minY)/100);
 
     return;
 
 }
 
 void graph::plot() {
+
+
+    /*sf::Text text;
+    text.setString("");
+    text.setCharacterSize(24);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(90, 100);*/
+
 
     while (graphOutput.isOpen()) {
         sf::Event output;
@@ -247,13 +259,15 @@ void graph::plot() {
             }
         }
 
-        graphOutput.clear();
+        graphOutput.clear((sf::Color::Black));
+
+        //graphOutput.draw(text);
 
         if(shapeCount >= 1) {
             graphOutput.draw(greenShape);
 
             for (int i = 0; i < greenCircles.size(); ++i) {
-                graphOutput.draw(greenCircles[i]);
+                //graphOutput.draw(greenCircles[i]);
             }
         }
 
@@ -261,7 +275,7 @@ void graph::plot() {
             graphOutput.draw(blueShape);
 
             for (int i = 0; i < blueCircles.size(); ++i) {
-                graphOutput.draw(blueCircles[i]);
+                //graphOutput.draw(blueCircles[i]);
             }
         }
 
@@ -269,12 +283,12 @@ void graph::plot() {
             graphOutput.draw(redShape);
 
             for (int i = 0; i < redCircles.size(); ++i) {
-                graphOutput.draw(redCircles[i]);
+                //graphOutput.draw(redCircles[i]);
             }
         }
         graphOutput.display();
     }
 
-return;
+    return;
 
 }
