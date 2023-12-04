@@ -2,7 +2,7 @@
 #include "convexHull.h"
 #include <cmath>
 
-const int PI = 3.14159265359;
+const double PI = 3.14159265359;
 
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
