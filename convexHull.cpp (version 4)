@@ -2,11 +2,13 @@
 #include "convexHull.h"
 #include <cmath>
 
-const double PI = 3.14159265359;
-
 convexHull::convexHull(std::string fileName) {
     this->fileName = fileName;
     convertToPoint();
+
+    if(pointsTemp.size() < 3) {
+        std::cout << "Convex Hull is not possible" << std::endl;
+    }
 
     Point points[pointsTemp.size()];
 
@@ -113,11 +115,11 @@ Point convexHull::Top(std::vector<Point> &vect){
 }
 
 double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
-    return std::atan2(y, x) * (180.0 / PI);
+    return std::atan2(y, x) * (180.0 / M_PI);
 }
 
-int convexHull::orientation(Point point1, Point point2, Point point3){
-    int orient = (point2.y - point1.y) * (point3.x - point2.x)
+double convexHull::orientation(Point point1, Point point2, Point point3){
+    double orient = (point2.y - point1.y) * (point3.x - point2.x)
                  - (point2.x - point1.x) * (point3.y - point2.y);
 
     //Colinear
@@ -146,8 +148,8 @@ void convexHull::convertToPoint() { //convertToPoint function
 
     while (getline(infile, line)) {
         std::stringstream strLine(line);
-        int tempx = 0;
-        int tempy = 0;
+        double tempx = 0;
+        double tempy = 0;
         while (strLine >> x) {
             std::string temp = "";
 
@@ -156,7 +158,7 @@ void convexHull::convertToPoint() { //convertToPoint function
                 temp += x[i];
                 i++;
             }
-            tempx = std::stoi(temp);
+            tempx = std::stod(temp);
             i++;
             temp.clear();
 
@@ -164,25 +166,22 @@ void convexHull::convertToPoint() { //convertToPoint function
                 temp += x[i];
                 i++;
             }
-            tempy = std::stoi(temp);
+            tempy = std::stod(temp);
         }
+
+        bool duplCheck = false; //Check for duplicate points
+        for(int j = 0; j < pointsTemp.size(); j++) {
+            if((pointsTemp[j].x == tempx) && (pointsTemp[j].y == tempy)) {
+                duplCheck = true;
+            }
+        }
+        if(duplCheck == false) {
             pointsTemp.push_back({tempx, tempy});
         }
     }
+}
 
 void convexHull::print() {
-    if(pointsTemp.size() < 3) {
-        std::cout << "Requires 3 or more points" << std::endl;
-        std::cout << "Cannot construct Convex Hull" << std::endl;
-        return;
-    }
-
-    if(output.empty()) {
-        std::cout << "No Convex Hull points" << std::endl;
-        std::cout << "Cannot construct Convex Hull" << std::endl;
-        return;
-    }
-
     std::vector<Point> out = output;
 
     while (out.size() > 0){
@@ -192,9 +191,9 @@ void convexHull::print() {
     }
 }
 
-void convexHull::dot() {
+void convexHull::dot(std::string outputName) {
     std::vector<Point> out = output;
-    std::ofstream File("convexHull.dot"); // Create or open a dot file named "convexHull.dot"
+    std::ofstream File(outputName); // Create or open a dot file named "output.dot"
 
     if (!File.is_open()) {
         std::cout << "Could not open the dot file." << std::endl;
@@ -214,95 +213,4 @@ void convexHull::dot() {
             out.pop_back();
         }
     }
-}
-
-void convexHull::dot2() {
-    std::vector<Point> out = pointsTemp;
-    std::ofstream File("convexHull2.dot"); // Create or open a dot file named "convexHull2.dot"
-
-    if (!File.is_open()) {
-        std::cout << "Could not open the dot file." << std::endl;
-    }
-
-    if(pointsTemp.size() < 3) {
-        //File << "Convex Hull is not possible" << std::endl;
-    }
-
-    else {
-        while (out.size() > 0) {
-            Point point = out[out.size() - 1];
-            File << "(" << point.x << "," << point.y << ")";
-            if (out.size() > 1) {
-                File << "\n";
-            }
-            out.pop_back();
-        }
-    }
-}
-
-void convexHull::nonSFMLDot() {
-    //Creating a dot file named "convexHullGraphviz.dot"
-    std::ofstream File("convexHullGraphviz.dot");
-
-    if (!File.is_open()) {
-        std::cout << "Could not open the dot file." << std::endl;
-    }
-
-    //Initializing vector of points for points that aren't edge vertices
-    std::vector<Point> otherPoints;
-
-    //Checks all the points to see if they are edge vertices / in convex hull
-    for (auto point : pointsTemp) {
-        bool isInConvexHull = false;
-
-        //Checks if point is in the convex hull
-        for (auto convexHullPoint : output) {
-            if (point.x == convexHullPoint.x && point.y == convexHullPoint.y) {
-                isInConvexHull = true;
-                break;
-            }
-        }
-
-        //Adds points that aren't edge vertices to the new vector
-        if (!isInConvexHull) {
-            otherPoints.push_back(point);
-        }
-    }
-
-    //Convex hull requires a minimum of 3 points
-    if (output.size() < 3) {
-        File << "graph G {\n";
-        //Writes only the points to the file (no edges)
-        for (size_t i = 0; i < pointsTemp.size(); i++) {
-            File << "\t" << i << " [label=\"(" << pointsTemp[i].x << "," << pointsTemp[i].y << ")\"];\n";
-        }
-        File << "}\n";
-        return;
-    }
-
-    File << "graph G {\n";
-
-    //Writes edge vertices as nodes
-    for (size_t i = 0; i < output.size(); i++) {
-        File << "\t" << i << " [label=\"(" << output[i].x << "," << output[i].y << ")\"];\n";
-    }
-
-    //Draws edges representing the convex hull
-    for (size_t i = 0; i < output.size(); i++) {
-        size_t nextIndex = (i + 1) % output.size();
-        File << "\t" << i << " -- " << nextIndex << " [color=\"blue\"];\n";
-    }
-
-    //Writes other points to the dot file
-    for (size_t i = 0; i < otherPoints.size(); i++) {
-        File << "\t" << i + output.size() << " [label=\"(" << otherPoints[i].x << "," << otherPoints[i].y << ")\"];\n";
-    }
-
-    //Fills in convex hull nodes with the color blue
-    for (size_t i = 0; i < output.size(); i++) {
-        File << "\t" << i << " ";
-        File << "[color=\"lightblue\", style=filled];\n";
-    }
-    File << "}\n";
-    File.close();
 }
