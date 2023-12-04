@@ -24,22 +24,28 @@ int main(int argc, char*argv[]) {
     if (shapeCount >= 1) {
         convexHull shape1(
                 (std::string(argv[1]))); //Creates an object of convexHull, in provided main.cpp object is called shape
+        std::cout << "Convex Hull of: " << argv[1] << std::endl;
         shape1.print(); //Prints the convexHull output to terminal
         shape1.dot("convexHull_1.dot"); //Prints the convexHull output to a .dot file
+        std::cout << std::endl;
     }
 
     if (shapeCount >= 2) {
         convexHull shape2(
                 (std::string(argv[2]))); //Creates an object of convexHull, in provided main.cpp object is called shape
+        std::cout << "Convex Hull of: " << argv[2] << std::endl;
         shape2.print(); //Prints the convexHull output to terminal
         shape2.dot("convexHull_2.dot"); //Prints the convexHull output to a .dot file
+        std::cout << std::endl;
     }
 
     if (shapeCount >= 3) {
         convexHull shape3(
                 (std::string(argv[3]))); //Creates an object of convexHull, in provided main.cpp object is called shape
+        std::cout << "Convex Hull of: " << argv[3] << std::endl;
         shape3.print(); //Prints the convexHull output to terminal
         shape3.dot("convexHull_3.dot"); //Prints the convexHull output to a .dot file
+        std::cout << std::endl;
     }
 
     if (shapeCount == 1) {
