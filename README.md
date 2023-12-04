@@ -78,10 +78,10 @@ Follow the SFML documentation instructions [here](https://www.sfml-dev.org/tutor
 In CLion, create a project using C++ 11, titled `convexHull`.
 
 1. Inside the `convexHull` project, create the files `main.cpp`, `convexHull.cpp`, and `convexHull.h`.
-2. Navigate to the GitHub repo `convexHull` directory and copy the `main.cpp`, `convexHull.cpp`, and `convexHull.h` from the GitHub repository and paste them into the `convexHull` project files with the matching titles.
+2. Navigate to the GitHub repo `convexHull` directory and copy the `main.cpp`, `convexHull.cpp`, and `convexHull.h` files from the GitHub repository and paste them into the `convexHull` project files with the matching titles.
 3. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
 4. Refactor the `CMakeLists.txt` if needed.
-5. Choose a file in the specified format for parsing (test files can be found in the test_cases folder)
+5. Choose a txt file with text in the specified format for parsing (test files can be found in the `test_cases` folder)
 6. In the `convexHull` project, run these two lines separately in the terminal (allows for one Txt file argument):
 
     ```
@@ -109,7 +109,7 @@ In CLion, create a project using C++ 11, titled `convexHull`.
     ./gen generic_file_name_1.txt generic_file_name_2.txt generic_file_name_3.txt
     ```
 
-    Up to three dotfiles named `convexHull_#.dot` will be created depending on the number of file arguments provided. The terminal will also output the Convex Hull points.
+    Up to three dotfiles named `convexHull_#.dot` will be created depending on the number of file arguments provided. The terminal will also output the Convex Hull points of each file.
 
     Take the desired `convexHull.dot` file(s) from the `convexHull` project and put them in the `cmake-build-debug` folder in the `convexHull` project.
 
