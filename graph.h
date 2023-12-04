@@ -20,10 +20,10 @@ private:
     std::vector<sf::Vector2f> bluePoints; //Shape 2
     std::vector<sf::Vector2f> redPoints; //Shape 3
 
-    double minX = 0;
-    double minY = 0;
-    double maxX = 0;
-    double maxY = 0;
+    double minX = MAXFLOAT;
+    double minY = MAXFLOAT;
+    double maxX = -MAXFLOAT;
+    double maxY = -MAXFLOAT;
 
     sf::ConvexShape greenShape;
     std::vector<sf::CircleShape> greenCircles;
@@ -46,7 +46,6 @@ public:
     void sizeWindow();
     void createShapes();
     void setColors();
-    void createLines();
     void plot();
 
     ~graph();
