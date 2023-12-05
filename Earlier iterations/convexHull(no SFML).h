@@ -20,7 +20,7 @@ private:
     static Point pivotPoint;
 
 public:
-    ConvexHull(std::string inputFileName);
+    ConvexHull(std::string inputFileName);    ///Constructor for taking in file with points
     ~ConvexHull();
 
     void solveConvexHull(Point inputPoints[], int size);
@@ -29,9 +29,7 @@ public:
     int calculateOrientation(Point point1, Point point2, Point point3);
     void parsePoints();
 
-    // Add any other necessary functions for your implementation
 
-    // Getters
     const std::vector<Point>& getConvexHullPoints() const { return convexHullPoints; }
 };
 
