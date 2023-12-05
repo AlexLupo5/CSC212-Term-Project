@@ -36,56 +36,56 @@ void convexHull::convexHullSolve(Point points[], int size){ //convexHullSolve fu
     }
 
     Point ptemp = points[0]; //create a temp point
-    points[0] = points[lowestval];
-    points[lowestval] = ptemp;
+    points[0] = points[lowestval]; //swap the lowest y with the first point
+    points[lowestval] = ptemp; //swap the first point with the last point
 
-    temp = points[0];
+    temp = points[0]; //save the lowest y in a global point
 
-    std::vector <Point> pointSort;
-    for(int i = 1; i < pointsTemp.size(); i++) {
+    std::vector <Point> pointSort; //create a new vector to sort the points
+    for(int i = 1; i < pointsTemp.size(); i++) { //push back all of the points besides the lowest y into the new vector
         pointSort.push_back(points[i]);
     }
 
-    int num = pointSort.size();
+    int num = pointSort.size(); //store the size in an integer variable
 
-    for(int i = 1; i <= num; i++) {
-        int ang = 0;
+    for(int i = 1; i <= num; i++) { //Sort using polar angle
+        int ang = 0; //set the angle to 0
 
-        for(int j = 0; j < pointSort.size(); j++) {
+        for(int j = 0; j < pointSort.size(); j++) { //
 
             if (polarAngle(pointSort[ang].x - points[0].x,
                            pointSort[ang].y - points[0].y) ==
                 polarAngle(pointSort[j].x - points[0].x,
-                           pointSort[j].y - points[0].y)) {
+                           pointSort[j].y - points[0].y)) { //Checks if the next point in reference to the lowest y is equal to the current stored point using polar angle
 
                 if((sqrt(pow(pointSort[ang].x - points[0].x,2) + pow(pointSort[ang].y - points[0].y, 2))) >
-                   (sqrt(pow(pointSort[j].x - points[0].x,2) + pow(pointSort[j].y - points[0].y, 2)))) {
-                    ang = j;
+                   (sqrt(pow(pointSort[j].x - points[0].x,2) + pow(pointSort[j].y - points[0].y, 2)))) { //Checks which x is further away in reference to lowest y using the distance between points
+                    ang = j; //set angle equal to j
                 }
             } else {
 
                 if (polarAngle(pointSort[ang].x - points[0].x,
                                pointSort[ang].y - points[0].y) >
                     polarAngle(pointSort[j].x - points[0].x,
-                               pointSort[j].y - points[0].y)) {
-                    ang = j;
+                               pointSort[j].y - points[0].y)) { //Checks if the next point in reference to the lowest y is greater than the current stored point using polar angle
+                    ang = j; //set angle equal to j
                 }
             }
         }
-        points[i] = (pointSort[ang]);
-        pointSort.erase(pointSort.begin() + ang);
+        points[i] = (pointSort[ang]); //add the point to point[i] using the ang as the index of pointSort
+        pointSort.erase(pointSort.begin() + ang); //remove that point in point sort
     }
 
-    int index = 1;
+    int index = 1; //set a new variable index to 1
     for (int i = 1; i < size; i++){
-        while ((i < size - 1) && (orientation(temp, points[i],points[i + 1]) == 0)){
+        while ((i < size - 1) && (orientation(temp, points[i],points[i + 1]) == 0)){ //increment i until a point has a clockwise or counterclockwise orientation
             i++;
         }
         points[index] = points[i];
-        index = index + 1;
+        index = index + 1; //Increment the index by one
     }
 
-    if (index < 3){
+    if (index < 3){ //there are not enough points
         return;
     }
 
@@ -116,16 +116,16 @@ double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of 
     return std::atan2(y, x) * (180.0 / PI);
 }
 
-double convexHull::orientation(Point point1, Point point2, Point point3){
+double convexHull::orientation(Point point1, Point point2, Point point3){ //Returns the orientation wether its collineark, clockwise, or counter, clockwise
     double orient = (point2.y - point1.y) * (point3.x - point2.x)
-                    - (point2.x - point1.x) * (point3.y - point2.y);
+                    - (point2.x - point1.x) * (point3.y - point2.y); //orientation equation
 
-    //Collinear
     if (orient >= 0) {
         //Clockwise
         if (orient > 0){
             return 1;
         }
+        //Collinear
         else {
             return 0;
         }
@@ -195,11 +195,11 @@ void convexHull::dot(std::string outputName) {
     std::vector<Point> out = output;
     std::ofstream File(outputName); // Create or open a dot file named "output.dot"
 
-    if (!File.is_open()) {
+    if (!File.is_open()) { //If the file cannot be open output the message
         std::cout << "Could not open the dot file." << std::endl;
     }
     else {
-        while (out.size() > 0) {
+        while (out.size() > 0) { //Traverse through each point and puts each point into the dot file with the form (x,y)
             Point point = out[out.size() - 1];
             File << "(" << point.x << "," << point.y << ")";
             if (out.size() > 1) {
