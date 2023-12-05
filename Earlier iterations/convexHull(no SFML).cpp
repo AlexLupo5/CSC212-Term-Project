@@ -77,7 +77,7 @@ void convexHull::solveConvexHull(Point inputPoints[], int size) {
     for (int i = 1; i < size; i++) {
         while ((i < size - 1) && (calculateOrientation(pivotPoint, inputPoints[i], inputPoints[i + 1]) == 0)) {
             i++;
-        }
+        }                                        //Finds respective orientation of angle to initial point
         inputPoints[index] = inputPoints[i];
         index = index + 1;
     }
@@ -95,7 +95,7 @@ void convexHull::solveConvexHull(Point inputPoints[], int size) {
                calculateOrientation(topPoint(convexHullPoints), convexHullPoints[convexHullPoints.size() - 1],
                                     inputPoints[i]) != 2) {
             convexHullPoints.pop_back();
-        }
+        }                                                ///Finds orientation
         convexHullPoints.push_back(inputPoints[i]);
     }
 }
@@ -105,7 +105,7 @@ Point convexHull::pivotPoint = Point();
 Point convexHull::topPoint(std::vector<Point> &pointsVector) {
     Point point = pointsVector[pointsVector.size() - 1];
     pointsVector.pop_back();
-    Point answer = pointsVector[pointsVector.size() - 1];
+    Point answer = pointsVector[pointsVector.size() - 1];                ///Determines the top point of the convex hull, based upon its location from initial
     pointsVector.push_back(point);
     return answer;
 }
