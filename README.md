@@ -16,8 +16,7 @@ Problem/Solution:
 **_Read a set of points from a file_**
 
 **Status Update**
-- For current working version of convexHull.cpp please download convexHull.cpp and convexHull.h to your program.
-convexHull (version 4)
+
   * convexHull can be called in main by convexHull "name of object"("file name");
   * convexHull.cpp also allows the user to print the output to the terminal or to a dot file by either calling "name of object".print() or "name of object".dot() in the main.cpp file.
   * convexHull.dot and convexHull2.dot files can be visualized by using graph.cpp
