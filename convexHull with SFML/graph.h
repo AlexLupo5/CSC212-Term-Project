@@ -34,7 +34,7 @@ private:
 public:
     graph(std::string filename, int shapeCount); //Constructor for one shape
     graph(std::string filename, std::string filenameBlue, int shapeCount); //Constructor for second shape
-    graph(std::string filename, std::string filenameBlue, std::string filenameRed, int shapeCount);
+    graph(std::string filename, std::string filenameBlue, std::string filenameRed, int shapeCount); //Constructor for third shape
 
     ~graph(); //graph deconstructor
 
