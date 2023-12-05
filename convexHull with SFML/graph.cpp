@@ -14,7 +14,7 @@ std::vector<sf::Vector2f> readFile(std::string filename) { //readFile function w
     while (getline(infile, line)) { //Increments through the file
         std::stringstream strLine(line);
 
-        double tempx = 0; //double tempx and tempy are used to hold the 
+        double tempx = 0; //double tempx and tempy are used to hold the
         double tempy = 0;
         while (strLine >> x) { //Increments through StrLine
             std::string temp = ""; //Create an empty string to place chars in when reading through each line
@@ -153,10 +153,6 @@ void graph::sizeWindow(){ //Set the size of the window function
         }
     }
 
-    //double rangeX = std::max(abs(minX), abs(maxX));
-    //double rangeY = std::max(abs(minY), abs(maxY));
-
-    //graphOutput.setView(sf::View(sf::FloatRect((-2 * rangeX), (-2 * rangeY), (4 * rangeX), (4 * rangeY))));
     sf::View view; //Create view to change the zoom on the graph and center of the graph
     view.setSize(((maxX-minX + (maxX-minX)/10)), -(maxY-minY + (maxY-minY)/10)); //Formula to find the size of the shapes
     view.setCenter((maxX+minX)/2, (maxY+minY)/2); //Formula to get the center of the shape
@@ -173,16 +169,6 @@ void graph::createShapes() { //createShapes function
         for (int i = 0; i < greenPoints.size(); i++) { //Output each point on the graphOutput
             greenShape.setPoint(i, greenPoints[i]);
         }
-
-        /*for (int i = 0; i < greenPoints.size(); i++) {
-            sf::Vector2f &point = greenPoints[i];
-
-            sf::CircleShape circle(3);
-            circle.setFillColor(sf::Color::Green);
-            circle.setPosition(point);
-            circle.setOrigin(3, 3);
-            greenCircles.push_back(circle);
-        }*/
     }
 
     if(shapeCount >= 2) { //If shapeCount >= 2 then graph the first and second shape
@@ -190,16 +176,6 @@ void graph::createShapes() { //createShapes function
         for (int i = 0; i < bluePoints.size(); i++) { //Output each point on the graphOutput
             blueShape.setPoint(i, bluePoints[i]);
         }
-
-        /*for (int i = 0; i < bluePoints.size(); ++i) {
-            sf::Vector2f &point = bluePoints[i];
-
-            sf::CircleShape circle(3);
-            circle.setFillColor(sf::Color::Blue);
-            circle.setPosition(point);
-            circle.setOrigin(3, 3);
-            blueCircles.push_back(circle);
-        }*/
     }
 
     if(shapeCount >= 3) { //If shapeCount >= 3 then graph the first, second and third shape
@@ -207,16 +183,6 @@ void graph::createShapes() { //createShapes function
         for (int i = 0; i < redPoints.size(); ++i) { //Output each point on the graphOutput
             redShape.setPoint(i, redPoints[i]);
         }
-
-        /*for (int i = 0; i < redPoints.size(); ++i) {
-            sf::Vector2f &point = redPoints[i];
-
-            sf::CircleShape circle(3);
-            circle.setFillColor(sf::Color::Red);
-            circle.setPosition(point);
-            circle.setOrigin(3, 3);
-            redCircles.push_back(circle);
-        }*/
     }
 
     return;
@@ -224,32 +190,30 @@ void graph::createShapes() { //createShapes function
 }
 
 void graph::setColors() { //setColors function
-
+double lineThickness = 0;
     greenShape.setFillColor(sf::Color(0, 255, 0, 75)); //Set greenShape plot color to green
     greenShape.setOutlineColor(sf::Color::Green); //Set the outline color of shape 1 to green, can be edited to any color
-    greenShape.setOutlineThickness((maxY-minY)/100);
+    if(maxY-minY > maxX-minX){
+        lineThickness = maxX-minX;
+    }
+    else{
+        lineThickness = maxY-minY;
+    }
+    greenShape.setOutlineThickness(lineThickness/100);
 
     blueShape.setFillColor(sf::Color(0, 0, 255, 75)); //Set greenShape plot color to blue
     blueShape.setOutlineColor(sf::Color::Blue); //Set the outline color of shape 2 to blue, can be edited to any color
-    blueShape.setOutlineThickness((maxY-minY)/100);
+    blueShape.setOutlineThickness(lineThickness/100);
 
     redShape.setFillColor(sf::Color(255, 0, 0, 75)); //Set greenShape plot color to red
     redShape.setOutlineColor(sf::Color::Red); //Set the outline color of shape 3 to red, can be edited to any color
-    redShape.setOutlineThickness((maxY-minY)/100);
+    redShape.setOutlineThickness(lineThickness/100);
 
     return;
 
 }
 
 void graph::plot() { //plot function
-
-
-    /*sf::Text text;
-    text.setString("");
-    text.setCharacterSize(24);
-    text.setFillColor(sf::Color::White);
-    text.setPosition(90, 100);*/
-
 
     while (graphOutput.isOpen()) { //While the graphOutput is open, run code below, once graphOutput is graphed, allow to be closed
         sf::Event output;
@@ -261,30 +225,17 @@ void graph::plot() { //plot function
 
         graphOutput.clear((sf::Color::Black)); //Clear the graphout window and can be used to set the color of the graph, might want the graph to be white or black
 
-        //graphOutput.draw(text);
-
         if(shapeCount >= 1) { //if shapeCount >= 1
             graphOutput.draw(greenShape); //Graph the first shape
-
-            for (int i = 0; i < greenCircles.size(); ++i) {
-                //graphOutput.draw(greenCircles[i]);
-            }
         }
 
         if(shapeCount >= 2) { //if shapeCount >= 2
             graphOutput.draw(blueShape); //Graph the second shape
 
-            for (int i = 0; i < blueCircles.size(); ++i) {
-                //graphOutput.draw(blueCircles[i]);
-            }
         }
 
         if(shapeCount >= 3) { //if shapeCount >= 3
             graphOutput.draw(redShape); //Graph the third shape
-
-            for (int i = 0; i < redCircles.size(); ++i) {
-                //graphOutput.draw(redCircles[i]);
-            }
         }
         graphOutput.display(); //Display graphOutput
     }
