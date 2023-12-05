@@ -41,7 +41,7 @@ void convexHull::checkForDupl() {
     std::vector<int> yTemp;
 
     for (int h = 0; h < xCoordinates.size(); h++) {
-        bool dupl = false;
+        bool dupl = false;                                            ///Determines if duplicate point exists by iterating through vector containing x and y coord
         for (int k = 0; k < xTemp.size(); k++) {
             if ((xCoordinates[h] == xTemp[k]) && (yCoordinates[h] == yTemp[k])) {
                 dupl = true;
@@ -61,7 +61,7 @@ void convexHull::visualize() {
     std::ofstream dotfile(fileName + ".dot");
     if (dotfile.is_open()) {
         dotfile << "graph convexHull";
-        dotfile << "{\n";
+        dotfile << "{\n";                                    ///Dotfile to visualize graph
         for (int i = 0; i < output.size(); i++) {
             dotfile << output[i] << ";\n";
         }
