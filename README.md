@@ -83,13 +83,13 @@ To download SFML for MacOS first you have to download homebrew
 
 **Windows:**
 
-You can find the SFML official instructions on there website located [here](https://www.sfml-dev.org/tutorials/2.6/).
+You can find the SFML official instructions on their website located [here](https://www.sfml-dev.org/tutorials/2.6/).
 
-Below will be provided basic instructions on install
+Basic installation instructions are provided below:
 
 1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
 2. The first thing to do on the webpage is to download this WinLibs MSVCRT 13.1.0 (64-bit)
-3. Then select and dowload the SFML that works with your IDE
+3. Then select and download the SFML that works with your IDE
 4. Extract the WinLibs MSVCRT 13.1.0 (64-bit)
 5. Cut the mingw64 folder and paste it into the Local Disk
 6. Then extract the SFML folder
@@ -163,7 +163,7 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE` with SFML
     ```
   
 9. After creating your data sets in the txt file(s), drag each text file into the cmake folder `cmake-build-debug` located on the left side of the project.
-10. Next navigate to the top right of your project in clion and locate the three dots next to the debug button
+10. Next navigate to the top right of your project in CLion and locate the three dots next to the debug button
 11. Click on the three dots followed by `Edit...` where you can then input up to three text file inputs in program arguments:
 
     Ex: test1.txt test2.txt test3.txt
