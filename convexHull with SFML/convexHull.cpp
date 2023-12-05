@@ -104,12 +104,12 @@ void convexHull::convexHullSolve(Point points[], int size){ //convexHullSolve fu
 
 Point convexHull::temp = Point();
 
-Point convexHull::Top(std::vector<Point> &vect){
-    Point point = vect[vect.size()-1];
-    vect.pop_back();
-    Point answer = vect[vect.size()-1];
-    vect.push_back(point);
-    return answer;
+Point convexHull::Top(std::vector<Point> &vect){ 
+    Point point = vect[vect.size()-1]; //Store the last element in the vector
+    vect.pop_back();  //Removes the last element in the vector
+    Point answer = vect[vect.size()-1];  //Store the new last element in the vector
+    vect.push_back(point); //Put the original last element back onto the top of the vector
+    return answer; //return top element
 }
 
 double convexHull::polarAngle(double x, double y) { //Returns the polarAngle of the given (x,y) coordinates
