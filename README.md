@@ -124,12 +124,12 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE`.
    (x3,y3)
    ...
     ```
-9. In the `convexHull` project terminal, run the following line to compile the code:
+9. In the `INSERT PROJECT TITLE` project terminal, run the following line to compile the code:
 
     ```
     g++ -std=c++11 main.cpp convexHull.cpp -o gen
     ```
-10. In the `convexHull` project terminal, run the following line to execute the code:
+10. In the `INSERT PROJECT TITLE` project terminal, run the following line to execute the code:
 
     ```
     ./gen (name of file).txt
