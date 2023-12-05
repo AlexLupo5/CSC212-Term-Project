@@ -81,7 +81,7 @@ void convexHull::convexHullSolve(Point points[], int size){ //convexHullSolve fu
         while ((i < size - 1) && (orientation(temp, points[i],points[i + 1]) == 0)){ //increment i until a point has a clockwise or counterclockwise orientation
             i++;
         }
-        points[index] = points[i];
+        points[index] = points[i]; //Add points[i] to points[index]
         index = index + 1; //Increment the index by one
     }
 
@@ -89,20 +89,20 @@ void convexHull::convexHullSolve(Point points[], int size){ //convexHullSolve fu
         return;
     }
 
-    for(int i = 0; i < 3; i++) {
+    for(int i = 0; i < 3; i++) { //push back points points[1 to 3]
         output.push_back(points[i]);
     }
 
-    for (int i = 3; i < index; i++){
+    for (int i = 3; i < index; i++){ //Increment through rest of points
         while (output.size() > 1 && orientation(Top(output), output[output.size() - 1], points[i]) != 2){
-            output.pop_back();
+            output.pop_back(); //If angle is a right turn then popback the previous point
         }
-        output.push_back(points[i]);
+        output.push_back(points[i]); //If angle is a left turn then pushback the current point
     }
 
 }
 
-Point convexHull::temp = Point();
+Point convexHull::temp = Point(); //Create a temp variable equal to Point();
 
 Point convexHull::Top(std::vector<Point> &vect){ 
     Point point = vect[vect.size()-1]; //Store the last element in the vector
