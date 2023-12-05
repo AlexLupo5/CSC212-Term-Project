@@ -78,13 +78,14 @@ To download SFML for MacOS first you have to download homebrew
    brew install sfml
     ```
     
-SFML will then be installed on your computer
+    SFML will then be installed on your computer
 
 
 **Windows:**
 
-You can find the SFML official instructions on there website located [here](https://www.sfml-dev.org/tutorials/2.6/).
-Below will be provided basic instructions on install
+You can find the SFML official instructions on their website located [here](https://www.sfml-dev.org/tutorials/2.6/).
+
+Basic installation instructions are provided below.
 
 1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
 2. The first thing to do on the webpage is to download this WinLibs MSVCRT 13.1.0 (64-bit)
