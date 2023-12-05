@@ -87,8 +87,15 @@ You can find the SFML official instructions on there website located [here](http
 Below will be provided basic instructions on install
 
 1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
-2. Select the dowload that works with your IDE
-3. 
+2. The first thing to do on the webpage is to download this WinLibs MSVCRT 13.1.0 (64-bit)
+3. Then select the dowload for SFML that works with your IDE
+4. Extract the WinLibs MSVCRT 13.1.0 (64-bit)
+5. Cut the mingw64 folder and paste it into the Local Disk
+6. Then extract the SFML folder
+7. Cut and paste the new SFML folder into the Local Disk
+8. When you open CLion if the mingw64 folder is not there you can click the three dots on the environment tab, find the mingw64 folder and apply it to the environment tab
+
+SFML should now be installed and ready to use on CLion
 
 
 <h2 align="center">Project Instructions</h2>
