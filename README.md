@@ -97,15 +97,15 @@ Below will be provided basic instructions on install
 
 **No SFML Required:**
 
-In CLion, create a project using C++ 11, titled `convexHull`.
+In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE`.
 
-  Ex: /Users/"Computer Name"/CLionProjects/convexHull
+  Ex: /Users/"Computer Name"/CLionProjects/INSERT PROJECT TITLE
 
-1. Inside the `convexHull` project, create the files `main.cpp`, `convexHull.cpp`, and `convexHull.h`.
+1. Inside the `INSERT PROJECT TITLE` project, create the files `main.cpp`, `convexHull.cpp`, and `convexHull.h`.
 2. Remove any content inside the files if there is any
 3. Navigate to the GitHub repo `convexHull` directory and copy the `main.cpp`, `convexHull.cpp`, and `convexHull.h` files from the GitHub repository and paste them into the `convexHull` project files with the matching titles. For example, main.cpp -> main.cpp.
 4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
-5. Refactor the `CMakeLists.txt` if needed.
+5. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
 6. Before running the code, you may create a txt file using the command `touch (name of file).txt ` in the terminal.
 7. After creating a text file, you may input your data in the text file with the format:
 
@@ -133,17 +133,18 @@ In CLion, create a project using C++ 11, titled `convexHull`.
 
 **WITH SFML:**
 
-In CLion, create a project using C++ 11, titled `convexHull` with SFML:
+In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE` with SFML:
 
-  Ex:  /Users/"Computer Name"/CLionProjects/SFML/convexHull
+  Ex:  /Users/"Computer Name"/CLionProjects/SFML/INSERT PROJECT TITLE
 
-1. Inside the `convexHull` project, create the files `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h`.
+1. Inside the `INSERT PROJECT TITLE` project, create the files `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h`.
 2. Remove any content inside the files if there is any
-3. Navigate to the GitHub repo `Convex Hull with SFML` directory and copy the `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h` files and paste them into the `convexHull` project files with the matching titles. For example, main.cpp -> main.cpp.
+3. Navigate to the GitHub repo `convexHull with SFML` directory and copy the `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h` files and paste them into the `convexHull` project files with the matching titles. For example, main.cpp -> main.cpp.
 4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the `convexHull with SFML` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
-5. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
-6. Before running the code, you may create txt files using the command `touch (name of file).txt ` in the terminal.
-7. After creating your text files, you may input your data in the text file with the format:
+5. Also in the `CMakeLists.txt` in the project insert your project title where it is specified
+6. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
+7. Before running the code, you may create up to three txt files using the command `touch (name of file).txt ` in the terminal.
+8. After creating your text files, you may input your data in the text file with the format:
 
     ```
    (x1,y1)
@@ -152,14 +153,14 @@ In CLion, create a project using C++ 11, titled `convexHull` with SFML:
    ...
     ```
   
-8. After creating your data sets in the txt file(s), drag each text file into the cmake folder `cmake-build-debug` located on the left side of the project.
-9. Next navigate to the top right of your project in clion and locate the three dots next to the debug button
-10. Click on the three dots followed by `Edit...` where you can then input up to three text file inputs in program arguments:
+9. After creating your data sets in the txt file(s), drag each text file into the cmake folder `cmake-build-debug` located on the left side of the project.
+10. Next navigate to the top right of your project in clion and locate the three dots next to the debug button
+11. Click on the three dots followed by `Edit...` where you can then input up to three text file inputs in program arguments:
 
     Ex: test1.txt test2.txt test3.txt
     
-11. Then click the blue OK button at the bottom of the configurations
-12. After closing out of the edit configurations tab, you are then able to run the code using the run button located at the top right corner of your project.
+12. Then click the blue OK button at the bottom of the configurations
+13. After closing out of the edit configurations tab, you are then able to run the code using the run button located at the top right corner of your project.
 
     Up to three dotfiles named `convexHull_#.dot` will be created depending on the number of file          arguments provided. The terminal will also output the Convex Hull points of each file.
 
