@@ -78,14 +78,14 @@ To download SFML for MacOS first you have to download homebrew
    brew install sfml
     ```
     
-    SFML will then be installed on your computer
+  SFML will then be installed on your computer
 
 
 **Windows:**
 
-You can find the SFML official instructions on their website located [here](https://www.sfml-dev.org/tutorials/2.6/).
+You can find the SFML official instructions on there website located [here](https://www.sfml-dev.org/tutorials/2.6/).
 
-Basic installation instructions are provided below.
+Below will be provided basic instructions on install
 
 1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
 2. The first thing to do on the webpage is to download this WinLibs MSVCRT 13.1.0 (64-bit)
@@ -111,11 +111,12 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE`.
 
 1. Inside the `INSERT PROJECT TITLE` project, create the files `main.cpp`, `convexHull.cpp`, and `convexHull.h`.
 2. Remove any content inside the files if there is any
-3. Navigate to the GitHub repo `convexHull` directory and copy the `main.cpp`, `convexHull.cpp`, and `convexHull.h` files from the GitHub repository and paste them into the `convexHull` project files with the matching titles. For example, main.cpp -> main.cpp.
-4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
-5. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
-6. Before running the code, you may create a txt file using the command `touch (name of file).txt ` in the terminal.
-7. After creating a text file, you may input your data in the text file with the format:
+3. Navigate to the GitHub repo `convexHull` directory and copy the `main.cpp`, `convexHull.cpp`, and `convexHull.h` files from the GitHub repository and paste them into the `INSERT PROJECT TITLE` project files with the matching titles. For example, main.cpp -> main.cpp.
+4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `INSERT PROJECT TITLE` project.
+5. Also in the `CMakeLists.txt` in the project insert your project title where it is specified
+6. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
+7. Before running the code, you may create a txt file using the command `touch (name of file).txt ` in the terminal.
+8. After creating a text file, you may input your data in the text file with the format:
 
     ```
    (x1,y1)
@@ -123,12 +124,12 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE`.
    (x3,y3)
    ...
     ```
-8. In the `convexHull` project terminal, run the following line to compile the code:
+9. In the `convexHull` project terminal, run the following line to compile the code:
 
     ```
     g++ -std=c++11 main.cpp convexHull.cpp -o gen
     ```
-9. In the `convexHull` project terminal, run the following line to execute the code:
+10. In the `convexHull` project terminal, run the following line to execute the code:
 
     ```
     ./gen (name of file).txt
@@ -147,8 +148,8 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE` with SFML
 
 1. Inside the `INSERT PROJECT TITLE` project, create the files `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h`.
 2. Remove any content inside the files if there is any
-3. Navigate to the GitHub repo `convexHull with SFML` directory and copy the `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h` files and paste them into the `convexHull` project files with the matching titles. For example, main.cpp -> main.cpp.
-4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the `convexHull with SFML` directory, then paste it into the `CMakeLists.txt` file in the `convexHull` project.
+3. Navigate to the GitHub repo `convexHull with SFML` directory and copy the `main.cpp`, `convexHull.cpp`, `convexHull.h`, `graph.cpp`, and `graph.h` files and paste them into the `INSERT PROJECT TITLE` project files with the matching titles. For example, main.cpp -> main.cpp.
+4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the `convexHull with SFML` directory, then paste it into the `CMakeLists.txt` file in the `INSERT PROJECT TITLE` project.
 5. Also in the `CMakeLists.txt` in the project insert your project title where it is specified
 6. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
 7. Before running the code, you may create up to three txt files using the command `touch (name of file).txt ` in the terminal.
@@ -174,7 +175,7 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE` with SFML
 
     In the rare case that the dotfiles do not get automatically put into the cmake-build-debug:
     
-    Drag the three desired `convexHull.dot` file(s) from the `convexHull` project and put them in the      `cmake-build-debug` folder in the `convexHull` project.
+    Drag the three desired `convexHull.dot` file(s) from the `INSERT PROJECT TITLE` project and put them in the      `cmake-build-debug` folder in the `INSERT PROJECT TITLE` project.
     ```
     convexHull_#.dot
     ```
