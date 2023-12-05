@@ -6,7 +6,7 @@
 #include <sstream>
 #include <cmath>
 
-struct Point {
+struct Point { //Used so we can work with points instead of multiple x and y arrays and vectors
     double x, y;
 };
 class convexHull {
