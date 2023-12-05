@@ -115,7 +115,7 @@ In CLion, create a project using C++ 11, titled `INSERT PROJECT TITLE`.
 4. Remove the content of the `CMakeLists.txt` file and copy the `CMakeLists.txt` from the GitHub repository `convexHull` directory, then paste it into the `CMakeLists.txt` file in the `INSERT PROJECT TITLE` project.
 5. Also in the `CMakeLists.txt` in the project insert your project title where it is specified
 6. The CMakeLists.txt logo should appear with two blue arrows going in a circle; click that, and it will refactor the CMakeLists.txt.
-7. Before running the code, you may create a txt file using the command `touch (name of file).txt ` in the terminal.
+7. Before running the code, you may create a txt file using the command `touch (name of file).txt ` in the terminal or use one in the `test_case` directory.
 8. After creating a text file, you may input your data in the text file with the format:
 
     ```
