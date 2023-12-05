@@ -88,7 +88,7 @@ Below will be provided basic instructions on install
 
 1. First navigate to the SFML download page [here](https://www.sfml-dev.org/download/sfml/2.6.1/)
 2. The first thing to do on the webpage is to download this WinLibs MSVCRT 13.1.0 (64-bit)
-3. Then select the dowload for SFML that works with your IDE
+3. Then select and dowload the SFML that works with your IDE
 4. Extract the WinLibs MSVCRT 13.1.0 (64-bit)
 5. Cut the mingw64 folder and paste it into the Local Disk
 6. Then extract the SFML folder
